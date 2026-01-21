@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shree Labels | Premium Printing Solutions</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+  <style>
+    /* ====== RESET & VARIABLES ====== */
+    :root {
+      --primary: #0f172a;    /* Dark Navy */
+      --secondary: #3b82f6;  /* Electric Blue */
+      --accent: #fbbf24;     /* Premium Gold */
+      --text-dark: #1e293b;
+      --text-light: #f8fafc;
+      --bg-light: #f1f5f9;
+      --glass: rgba(255, 255, 255, 0.95);
+      --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.15);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      line-height: 1.7;
+      color: var(--text-dark);
+      background-color: var(--bg-light);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--primary); }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    /* ====== NAVBAR ====== */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      transition: var(--transition);
+    }
+
+    nav .logo {
+        color: white;
+        font-weight: 700;
+        font-size: 1.5rem;
+        font-family: 'Playfair Display', serif;
+        letter-spacing: 1px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    nav ul li a {
+      color: rgba(255,255,255,0.8);
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--accent);
+      transition: var(--transition);
+    }
+
+    nav ul li a:hover { color: white; }
+    nav ul li a:hover::after { width: 100%; }
+
+    /* Mobile Menu Toggle */
+    .mobile-menu-btn { display: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem; }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--primary);
+        padding: 1rem;
+        text-align: center;
+      }
+      nav ul.show { display: flex; }
+      .mobile-menu-btn { display: block; }
+    }
+
+    /* ====== HERO SECTION ====== */
+    .hero {
+      height: 100vh;
+      width: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background-color: var(--primary);
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.75)),
+                  url('https://images.unsplash.com/photo-1562619425-c307bb83bc42?q=80&w=2070&auto=format&fit=crop') no-repeat center/cover;
+      animation: zoomSlow 20s infinite alternate;
+    }
+
+    @keyframes zoomSlow {
+      from { transform: scale(1); }
+      to { transform: scale(1.1); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 2rem;
+      color: white;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      color: white;
+      text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      animation: slideUp 1s ease-out;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: var(--secondary);
+      color: white;
+      font-weight: 600;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+    }
+    .btn a { text-decoration: none; color: white; }
+
+    .btn:hover {
+      background: var(--accent);
+      color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(251, 191, 36, 0.4);
+    }
+
+    /* ====== ABOUT SECTION ====== */
+    .about {
+      padding: 6rem 5%;
+      background: white;
+      text-align: center;
+    }
+
+    .about h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .about h2::after {
+      content: '';
+      display: block;
+      width: 60%;
+      height: 3px;
+      background: var(--accent);
+      margin: 10px auto 0;
+    }
+
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.2rem;
+      color: #475569;
+    }
+
+    .highlight {
+      color: var(--secondary);
+      font-weight: 700;
+      background: rgba(59, 130, 246, 0.1);
+      padding: 0 5px;
+      border-radius: 4px;
+    }
+
+    /* ====== GALLERY SECTION (UPDATED FOR SLIDER) ====== */
+    .gallery {
+      padding: 6rem 5%;
+      background: var(--bg-light);
+    }
+
+    .gallery h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    /* Slider Container */
+    .gallery-slider {
+      display: flex;
+      gap: 2rem;
+      overflow-x: auto; /* Enables the "slide bar" / scrolling */
+      scroll-snap-type: x mandatory;
+      padding-bottom: 2rem; /* Space for scrollbar */
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin; /* Firefox: thinner scrollbar */
+      scrollbar-color: var(--secondary) #e2e8f0;
+    }
+
+    /* Custom Scrollbar Styling (Webkit) */
+    .gallery-slider::-webkit-scrollbar {
+      height: 8px;
+    }
+    .gallery-slider::-webkit-scrollbar-track {
+      background: #e2e8f0;
+      border-radius: 4px;
+    }
+    .gallery-slider::-webkit-scrollbar-thumb {
+      background: var(--secondary);
+      border-radius: 4px;
+    }
+
+    /* Individual Image Card */
+    .gallery-card {
+      flex: 0 0 calc(33.333% - 1.33rem); /* Shows 3 images at a time */
+      scroll-snap-align: start;
+      min-width: 300px;
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .gallery-card img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    }
+
+    /* Mobile Responsive: Show 1 image at a time */
+    @media (max-width: 768px) {
+      .gallery-card {
+        flex: 0 0 85%;
+        min-width: auto;
+      }
+    }
+
+    /* ====== SERVICES SECTION ====== */
+    .services {
+      padding: 6rem 5%;
+      background: white;
+    }
+
+    .services h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .service-card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 16px;
+      border: 1px solid #e2e8f0;
+      text-align: center;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      border-color: var(--secondary);
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 5px;
+      background: var(--secondary);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-icon-container {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #eff6ff;
+      border-radius: 50%;
+      color: var(--secondary);
+      font-size: 2rem;
+    }
+    
+    .service-icon {
+        width: 60%;
+        height: 60%;
+        object-fit: contain;
+    }
+
+    .service-card h3 {
+      margin-bottom: 1rem;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+    }
+
+    .service-card p {
+      font-size: 0.95rem;
+      color: #64748b;
+    }
+
+    /* ====== FEEDBACK SECTION ====== */
+    .feedback {
+      padding: 6rem 5%;
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    }
+
+    .feedback h2 {
+        text-align: center;
+        margin-bottom: 3rem;
+        font-size: 2.5rem;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+      list-style: none;
+    }
+
+    .review-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      border-left: 4px solid var(--accent);
+      animation: fadeIn 0.5s ease;
+    }
+
+    .review-card h4 {
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .review-stars { color: var(--accent); margin-bottom: 0.5rem; font-size: 1.2rem; }
+
+    #review-form {
+      max-width: 500px;
+      margin: 0 auto;
+      background: white;
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-family: inherit;
+      transition: var(--transition);
+      background: #f8fafc;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--secondary);
+      background: white;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    .stars {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    .star { color: #cbd5e1; transition: color 0.2s; }
+    .star:hover, .star.selected { color: var(--accent); }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 1rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    button[type="submit"]:hover { background: var(--secondary); }
+    button[type="submit"]:disabled { background: #94a3b8; cursor: not-allowed; }
+
+    .feedback-response { 
+        text-align: center; 
+        margin-top: 1rem; 
+        font-weight: 600; 
+        min-height: 1.5rem;
+        font-size: 0.9rem;
+    }
+    .text-success { color: #16a34a; }
+    .text-error { color: #dc2626; }
+
+    /* ====== LOCATION ====== */
+    .location {
+      padding: 0;
+      height: 400px;
+      position: relative;
+    }
+    
+    .map-container {
+      width: 100%;
+      height: 100%;
+    }
+    
+    .map-container iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        filter: grayscale(100%);
+        transition: filter 0.3s;
+    }
+    
+    .map-container iframe:hover {
+        filter: grayscale(0%);
+    }
+
+    /* ====== CONTACT ====== */
+    .contact {
+      padding: 6rem 5%;
+      background: var(--primary);
+      color: white;
+    }
+
+    .contact-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .contact-info {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .contact-info h3 {
+      color: white;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-info p {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    #contact-form {
+      flex: 1.5;
+      min-width: 300px;
+    }
+
+    #contact-form input, #contact-form textarea {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: white;
+    }
+
+    #contact-form input::placeholder, #contact-form textarea::placeholder {
+      color: rgba(255,255,255,0.5);
+    }
+
+    #contact-form input:focus, #contact-form textarea:focus {
+      background: rgba(255,255,255,0.1);
+      border-color: var(--secondary);
+    }
+
+    /* ====== FOOTER ====== */
+    footer {
+      background: #020617; 
+      padding: 2rem 5%;
+      text-align: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 2rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a:hover { color: var(--secondary); }
+
+    /* Animations */
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      .contact-content { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">SHREE LABELS</div>
+    <div class="mobile-menu-btn" onclick="document.querySelector('nav ul').classList.toggle('show')">☰</div>
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#feedback">Feedback</a></li>
+      <li><a href="#location">Location</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="hero" class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <h1>Where Precision Meets<br><span style="color: var(--accent);">Sustainability</span></h1>
+      <button class="btn"><a href="#gallery">Explore Our Work</a></button>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <h2>About Us</h2>
+    <div class="about-content">
+      <p>
+        At Shree Labels, we deliver <span class="highlight">high-quality offset-printed labels</span> that bring your brand to life. Based in <span class="highlight">Karur, Tamil Nadu</span>, we specialize in <span class="highlight">cotton tape, taffeta, satin, and custom label solutions</span> with precision printing and vibrant finishes.
+      </p>
+      <br>
+      <p>
+        Our focus is on <span class="highlight">quality, timely delivery, and eco-friendly practices</span>, making us a trusted partner for businesses across industries.
+      </p>
+    </div>
+  </section>
+
+  <section id="gallery" class="gallery">
+    <h2>Label Samples</h2>
+    
+    <div class="gallery-slider">
+
+      <div class="gallery-card">
+        <img src="gallery/label1.jpeg" alt="Clothing Label Sample 1">
+      </div>
+
+      <div class="gallery-card">
+        <img src="gallery/label2.jpeg" alt="Label Sample 2">
+      </div>
+
+      <div class="gallery-card">
+        <img src="gallery/label3.jpeg" alt="Label Sample 3">
+      </div>
+
+      <div class="gallery-card">
+        <img src="gallery/label4.jpeg" alt="Label Sample 4">
+      </div>
+
+      <div class="gallery-card">
+        <img src="gallery/label5.jpeg" alt="Label Sample 5">
+      </div>
+
+      <div class="gallery-card">
+        <img src="gallery/label6.jpeg" alt="Label Sample 6">
+      </div>
+
+    </div>
+  </section>
+
+  <section id="services" class="services">
+    <h2>Our Expertise</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon-container">
+          <img src="https://cdn-icons-png.flaticon.com/512/2920/2920329.png" alt="Label Icon" class="service-icon">
+        </div>
+        <h3>Label Printing</h3>
+        <p>Premium quality woven and printed labels with perfect finishing for the apparel industry.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon-container">
+          <img src="https://cdn-icons-png.flaticon.com/512/265/265667.png" alt="Sticker Icon" class="service-icon">
+        </div>
+        <h3>Sticker Printing</h3>
+        <p>Custom stickers with vibrant colors, durable adhesive, and weather-resistant coatings.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon-container">
+          <img src="https://cdn-icons-png.flaticon.com/512/2920/2920349.png" alt="Offset Icon" class="service-icon">
+        </div>
+        <h3>Offset Printing</h3>
+        <p>High-volume commercial printing with superior color accuracy and sharp details.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon-container">
+          <img src="https://cdn-icons-png.flaticon.com/512/679/679922.png" alt="Finishing Icon" class="service-icon">
+        </div>
+        <h3>Custom Finishing</h3>
+        <p>Embossing, debossing, and spot UV coating to make your brand products stand out.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="feedback" class="feedback">
+    <h2>Client Feedback</h2>
+
+    <ul id="review-list" class="reviews-grid">
+        </ul>
+
+    <form id="review-form">
+      <h3>Leave a Review</h3>
+      <input type="text" id="reviewer-name" name="name" placeholder="Your Name" required>
+      <input type="email" id="reviewer-email" name="email" placeholder="Your Email (for verification)" required>
+      <textarea id="review-text" name="message" rows="4" placeholder="Share your experience..." required></textarea>
+      
+      <div class="stars">
+        <span class="star" data-value="1">★</span>
+        <span class="star" data-value="2">★</span>
+        <span class="star" data-value="3">★</span>
+        <span class="star" data-value="4">★</span>
+        <span class="star" data-value="5">★</span>
+      </div>
+      
+      <button type="submit" id="submit-review-btn">Submit Feedback</button>
+      <p id="review-response" class="feedback-response"></p>
+    </form>
+  </section>
+
+  <section id="location" class="location">
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1337.9796498319527!2d78.06319673050042!3d10.96456725315808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baa2f4562bf8255%3A0x81dab99d13c9ba73!2sShree%20Labels!5e1!3m2!1sen!2sin!4v1757053264006!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="contact-content">
+      <div class="contact-info">
+        <h3>Get in Touch</h3>
+        <p>Ready to start your project? Contact us today for a free quote.</p>
+        <br>
+        <p><strong>Email:</strong> info@company.com</p>
+        <p><strong>Phone:</strong> +91 98765 43210</p>
+        <p><strong>Address:</strong> Karur, Tamil Nadu, India</p>
+      </div>
+      <form id="contact-form">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="5" placeholder="How can we help you?" required></textarea>
+        <button type="submit" id="contact-submit-btn">Send Message</button>
+        <p id="contact-response" class="feedback-response" style="color: white;"></p>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <ul class="footer-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#feedback">Feedback</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <p>© 2025 Shree Labels. All rights reserved.</p>
+  </footer>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, limit, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+    import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+
+    // 1. Firebase Configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyAYpdJYpygZK0nGtrUbn83Vg_5Jhk7yUUk",
+      authDomain: "shree-labels.firebaseapp.com",
+      projectId: "shree-labels",
+      storageBucket: "shree-labels.appspot.com",
+      messagingSenderId: "669423377112",
+      appId: "1:669423377112:web:aa05dfb3779541265315ad",
+      measurementId: "G-6RVNGGW071"
+    };
+
+    // 2. Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+    
+    // Global flag for UI
+    let authFailed = false;
+
+    // 3. EmailJS Initialization
+    emailjs.init('LIyW5ilfH6JzF8_Hc'); // Your Public Key
+
+    // 4. Authentication (Optimized Pattern with Fallback)
+    const initAuth = async () => {
+      let signedIn = false;
+      
+      // Attempt 1: Custom Token (if available)
+      if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+        try {
+          await signInWithCustomToken(auth, __initial_auth_token);
+          signedIn = true;
+        } catch (e) {
+          console.warn("Custom token auth failed, attempting fallback:", e);
+        }
+      }
+
+      // Attempt 2: Anonymous Auth (Fallback)
+      if (!signedIn) {
+        try {
+          await signInAnonymously(auth);
+        } catch (e) {
+          console.error("Auth Failed:", e);
+          if (e.code === 'auth/configuration-not-found' || e.code === 'auth/admin-restricted-operation') {
+             authFailed = true;
+             console.error("URGENT: Enable Anonymous Auth in Firebase Console -> Authentication -> Sign-in method");
+          }
+        }
+      }
+    };
+    initAuth();
+
+    // 5. Shared UI Helper
+    const showMessage = (elementId, message, isSuccess) => {
+        const el = document.getElementById(elementId);
+        if(el) {
+            el.innerText = message;
+            el.className = 'feedback-response ' + (isSuccess ? 'text-success' : 'text-error');
+            // Remove timeout for errors so user can read them
+            if(isSuccess) setTimeout(() => { el.innerText = ''; }, 5000);
+        }
+    };
+
+    // ==========================================
+    // LOGIC: REVIEWS / FEEDBACK SYSTEM
+    // ==========================================
+    const reviewForm = document.getElementById('review-form');
+    const reviewList = document.getElementById('review-list');
+    const stars = document.querySelectorAll('.star');
+    let selectedRating = 0;
+
+    // Star Selection Logic
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        selectedRating = star.dataset.value;
+        stars.forEach(s => s.classList.remove('selected'));
+        for (let i = 0; i < selectedRating; i++) stars[i].classList.add('selected');
+      });
+    });
+
+    // Handle Review Submission
+    if(reviewForm) {
+        reviewForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('submit-review-btn');
+            
+            // Critical check for Disabled Auth
+            if (authFailed) {
+                 showMessage('review-response', "Error: 'Anonymous Auth' is disabled in your Firebase Console. Please enable it.", false);
+                 return;
+            }
+
+            if (!selectedRating) {
+                showMessage('review-response', "Please select a star rating!", false);
+                return;
+            }
+
+            // Disable button
+            btn.disabled = true;
+            btn.innerText = "Sending...";
+
+            const name = document.getElementById('reviewer-name').value;
+            const email = document.getElementById('reviewer-email').value;
+            const feedback = document.getElementById('review-text').value;
+
+            try {
+                // Save to Firebase (Simpler path since it's your own project)
+                if (auth.currentUser) {
+                    await addDoc(collection(db, 'reviews'), {
+                        name: name,
+                        email: email, 
+                        feedback: feedback,
+                        rating: selectedRating,
+                        timestamp: serverTimestamp()
+                    });
+                } else {
+                    throw new Error("Authentication not ready. Please try again or check console.");
+                }
+
+                // Success State
+                showMessage('review-response', "Thank you! Your feedback has been saved.", true);
+                reviewForm.reset();
+                stars.forEach(s => s.classList.remove('selected'));
+                selectedRating = 0;
+
+            } catch (error) {
+                console.error("Submission Error:", error);
+                
+                // Show ACTUAL error to user for debugging
+                let errorMsg = "Error saving feedback: " + (error.message || "Unknown error");
+                
+                if (error.code === 'permission-denied') {
+                   errorMsg = "Permission Denied: Update Firestore Rules in Console.";
+                } else if (error.code === 'unavailable') {
+                   errorMsg = "Network Error: Please check your connection.";
+                }
+                
+                showMessage('review-response', errorMsg, false);
+            } finally {
+                btn.disabled = false;
+                btn.innerText = "Submit Feedback";
+            }
+        });
+    }
+
+    // Load Live Reviews
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            // Listen to the 'reviews' collection in real-time
+            // Note: If you get "Missing or insufficient permissions", check your Firestore Rules
+            const q = query(
+                collection(db, 'reviews'), 
+                orderBy("timestamp", "desc"), 
+                limit(6)
+            );
+
+            onSnapshot(q, (snapshot) => {
+                reviewList.innerHTML = '';
+                if(snapshot.empty) {
+                    reviewList.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #64748b;">No reviews yet. Be the first!</p>';
+                }
+                snapshot.forEach(doc => {
+                    const data = doc.data();
+                    const li = document.createElement('li');
+                    li.className = "review-card";
+                    // Generate Star String
+                    const starString = '★'.repeat(data.rating) + '☆'.repeat(5 - data.rating);
+                    
+                    li.innerHTML = `
+                      <h4>${data.name}</h4>
+                      <div class="review-stars">${starString}</div>
+                      <p>${data.feedback}</p>
+                    `;
+                    reviewList.appendChild(li);
+                });
+            }, (error) => {
+                console.error("Error loading reviews:", error);
+                // Silent fail for loading to not disrupt UI, usually permission issue
+            });
+        }
+    });
+
+
+    // ==========================================
+    // LOGIC: CONTACT FORM
+    // ==========================================
+    const contactForm = document.getElementById('contact-form');
+    if(contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('contact-submit-btn');
+            
+            btn.disabled = true;
+            btn.innerText = "Sending...";
+
+            const formData = {
+                from_name: contactForm.name.value,
+                from_email: contactForm.email.value,
+                message: contactForm.message.value
+            };
+
+            // This sends to YOUR email via EmailJS
+            emailjs.send('service_15i8wvf', 'template_a3kk19i', formData)
+                .then(() => {
+                    showMessage('contact-response', "Message sent successfully!", true);
+                    contactForm.reset();
+                })
+                .catch((error) => {
+                    console.error("Email Error:", error);
+                    showMessage('contact-response', "Failed to send. Please try again.", false);
+                })
+                .finally(() => {
+                    btn.disabled = false;
+                    btn.innerText = "Send Message";
+                });
+        });
+    }
+
+    // ==========================================
+    // LOGIC: GENERAL UI (Smooth Scroll)
+    // ==========================================
+    document.addEventListener('DOMContentLoaded', () => {
+      // Smooth Scrolling
+      const navLinks = document.querySelectorAll('nav ul li a, .footer-links li a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          const targetId = link.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+              targetElement.scrollIntoView({ behavior: 'smooth' });
+              // Close mobile menu if open
+              document.querySelector('nav ul').classList.remove('show');
+          }
+        });
+      });
+    });
+
+  </script>
+</body>
+</html>
