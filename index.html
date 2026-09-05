@@ -355,8 +355,13 @@
       font-size: 0.88rem;
     }
 
-    .mobile-menu-btn {
+    .mobile-menu-btn,
+    .mobile-close-btn,
+    .mobile-nav-backdrop {
       display: none;
+    }
+
+    .mobile-menu-btn {
       background: transparent;
       color: var(--c-white);
       cursor: pointer;
@@ -1916,9 +1921,11 @@
         padding: 4.5rem 0;
       }
 
-      /* Navigation Header */
+      /* Navigation Header & Stacking Context (Fixes Backdrop Blocking Drawer) */
       nav {
         padding: 0.75rem 1.25rem;
+        position: relative;
+        z-index: 1002; /* Ensures nav & drawer sit above the mobile backdrop (z-index 1000) */
       }
 
       .brand-logo {
@@ -1993,7 +2000,8 @@
         gap: 1.5rem;
         box-shadow: -12px 0 35px rgba(3, 10, 20, 0.88);
         transition: right 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
-        z-index: 1001;
+        z-index: 1003;
+        pointer-events: auto;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
       }
@@ -2004,6 +2012,7 @@
 
       /* Smooth Dark Tint Backdrop (NO backdrop-filter blur to preserve sharp text rendering) */
       .mobile-nav-backdrop {
+        display: block;
         position: fixed;
         top: 0;
         left: 0;
@@ -2042,6 +2051,8 @@
         font-size: 1.35rem;
         cursor: pointer;
         padding: 0;
+        pointer-events: auto;
+        z-index: 1004;
         transition: var(--transition);
       }
 
@@ -2078,6 +2089,8 @@
         font-weight: 500;
         color: #FFFFFF;
         border-radius: var(--radius-sm);
+        pointer-events: auto;
+        cursor: pointer;
         transition: var(--transition);
       }
 
@@ -2099,6 +2112,8 @@
         margin-top: 0.5rem;
         font-size: 1rem;
         font-weight: 600;
+        pointer-events: auto;
+        cursor: pointer;
       }
 
       /* Hero Section (Mobile Optimized) */
@@ -3687,21 +3702,37 @@
       const navDrawer = document.getElementById('nav-drawer');
       const navBackdrop = document.getElementById('nav-backdrop');
 
-      const openMenu = () => {
-        navDrawer.classList.add('active');
-        navBackdrop.classList.add('active');
+      const openMenu = (e) => {
+        if (e) e.stopPropagation();
+        if (navDrawer) navDrawer.classList.add('active');
+        if (navBackdrop) navBackdrop.classList.add('active');
         document.body.style.overflow = 'hidden';
       };
 
-      const closeMenu = () => {
-        navDrawer.classList.remove('active');
-        navBackdrop.classList.remove('active');
+      const closeMenu = (e) => {
+        if (e && e.stopPropagation) e.stopPropagation();
+        if (navDrawer) navDrawer.classList.remove('active');
+        if (navBackdrop) navBackdrop.classList.remove('active');
         document.body.style.overflow = '';
       };
 
       if (menuToggle) menuToggle.addEventListener('click', openMenu);
       if (menuClose) menuClose.addEventListener('click', closeMenu);
       if (navBackdrop) navBackdrop.addEventListener('click', closeMenu);
+
+      // Prevent clicks inside the drawer container from bubbling to the backdrop
+      if (navDrawer) {
+        navDrawer.addEventListener('click', (e) => {
+          e.stopPropagation();
+        });
+      }
+
+      // Close drawer if viewport is resized back to desktop (> 768px)
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && navDrawer && navDrawer.classList.contains('active')) {
+          closeMenu();
+        }
+      }, { passive: true });
 
       // Smooth Scrolling for All Navigation Links
       const navLinks = document.querySelectorAll('nav ul li a, .footer-links li a, .hero-actions a, .nav-cta-btn, .card-cta-link');
@@ -3716,7 +3747,8 @@
                 closeMenu();
                 const headerOffset = 70;
                 const elementPosition = targetElement.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                const currentScroll = window.scrollY || window.pageYOffset || 0;
+                const offsetPosition = elementPosition + currentScroll - headerOffset;
 
                 window.scrollTo({
                   top: offsetPosition,
