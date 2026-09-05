@@ -3,80 +3,315 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shree Labels | Premium Printing Solutions</title>
+  <title>Shree Labels | Premium Printing & Label Solutions | Karur, Tamil Nadu</title>
   
+  <!-- Modern Clean Typography: Manrope (Headings) and Inter (Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
   
+  <!-- EmailJS Library (Preserved) -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
   <style>
-    /* ====== RESET & VARIABLES ====== */
+    /* ==========================================================================
+       DESIGN SYSTEM & COLOR TOKENS (STRICT BLUE & WHITE ONLY FOR UI)
+       ========================================================================== */
     :root {
-      --primary: #0f172a;    /* Dark Navy */
-      --secondary: #3b82f6;  /* Electric Blue */
-      --accent: #fbbf24;     /* Premium Gold */
-      --text-dark: #1e293b;
-      --text-light: #f8fafc;
-      --bg-light: #f1f5f9;
-      --glass: rgba(255, 255, 255, 0.95);
-      --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.15);
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      /* Deep Navy Blues */
+      --c-navy-darkest: #071426;
+      --c-navy-dark: #0B1F3A;
+      --c-navy-mid: #102B4E;
+
+      /* Professional & Royal Blues */
+      --c-blue-deep: #0F4C81;
+      --c-blue-brand: #145593;
+      --c-blue-royal: #1E6FB9;
+      --c-blue-bright: #2F80ED;
+
+      /* Light & Soft Blues */
+      --c-blue-ice: #F0F6FD;
+      --c-blue-soft: #F6FAFE;
+      --c-blue-tint: #EAF4FF;
+
+      /* Borders & Dividers */
+      --c-border-subtle: #D8E8F8;
+      --c-border-medium: #BDD8F4;
+      
+      /* Pure White */
+      --c-white: #FFFFFF;
+
+      /* Typography Blues (Strictly Dark Navy Blue instead of black) */
+      --text-heading: #0B1F3A;
+      --text-body: #1E3A5F;
+      --text-secondary: #355883;
+      --text-muted: #5B7D9E;
+      --text-light: #FFFFFF;
+      --text-light-muted: #D3E6FA;
+
+      /* Interactive Stars (Pure Blue System) */
+      --star-active: #1E6FB9;
+      --star-hover: #2F80ED;
+      --star-inactive: #BDD8F4;
+
+      /* Elevation & Shadows */
+      --shadow-sm: 0 2px 8px rgba(11, 31, 58, 0.05);
+      --shadow-md: 0 8px 24px -4px rgba(11, 31, 58, 0.08);
+      --shadow-lg: 0 16px 36px -6px rgba(11, 31, 58, 0.12);
+      --shadow-blue: 0 10px 30px rgba(30, 111, 185, 0.25);
+      --shadow-dark: 0 12px 32px rgba(7, 20, 38, 0.4);
+
+      /* Typography & Metrics */
+      --font-heading: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+      --transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    
-    html { scroll-behavior: smooth; }
+    /* ==========================================================================
+       RESET & BASE STYLES
+       ========================================================================== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
 
     body {
-      font-family: 'Outfit', sans-serif;
-      line-height: 1.7;
-      color: var(--text-dark);
-      background-color: var(--bg-light);
+      font-family: var(--font-body);
+      line-height: 1.65;
+      color: var(--text-body);
+      background-color: var(--c-white);
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--primary); }
-    a { text-decoration: none; color: inherit; }
-    img { display: block; max-width: 100%; }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      color: var(--text-heading);
+      font-weight: 700;
+      line-height: 1.25;
+    }
 
-    /* ====== NAVBAR ====== */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      padding: 1rem 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(15, 23, 42, 0.95);
-      backdrop-filter: blur(10px);
-      z-index: 1000;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    a {
+      text-decoration: none;
+      color: inherit;
       transition: var(--transition);
     }
 
-    nav .logo {
-        color: white;
-        font-weight: 700;
-        font-size: 1.5rem;
-        font-family: 'Playfair Display', serif;
-        letter-spacing: 1px;
+    /* NOTE: Product photographs & gallery images must retain their natural colors */
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      filter: none !important; /* Preserves natural image colors */
+    }
+
+    button, input, textarea {
+      font-family: inherit;
+      border: none;
+      outline: none;
+    }
+
+    ::selection {
+      background-color: var(--c-blue-tint);
+      color: var(--c-navy-dark);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 740px;
+      margin: 0 auto 3.5rem auto;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1.1rem;
+      background: var(--c-blue-tint);
+      border: 1px solid var(--c-border-medium);
+      color: var(--c-blue-deep);
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 3.4vw, 2.6rem);
+      margin-bottom: 1rem;
+      letter-spacing: -0.5px;
+    }
+
+    .section-subtitle {
+      font-size: 1.08rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* Primary & Secondary Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.9rem 2rem;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: var(--c-blue-bright);
+      color: var(--c-white);
+      box-shadow: var(--shadow-blue);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-primary:hover {
+      background: var(--c-blue-royal);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(30, 111, 185, 0.35);
+      color: var(--c-white);
+    }
+
+    .btn-outline-white {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--c-white);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-outline-white:hover {
+      background: var(--c-white);
+      color: var(--c-navy-dark);
+      border-color: var(--c-white);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-blue {
+      background: var(--c-white);
+      color: var(--c-blue-deep);
+      border: 1px solid var(--c-border-medium);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-outline-blue:hover {
+      background: var(--c-blue-tint);
+      border-color: var(--c-blue-royal);
+      color: var(--c-blue-royal);
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================================
+       1. NAVIGATION BAR
+       ========================================================================== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: var(--transition);
+    }
+
+    nav {
+      width: 100%;
+      padding: 1.1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(7, 20, 38, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(216, 232, 248, 0.12);
+      transition: var(--transition);
+    }
+
+    header.scrolled nav {
+      padding: 0.85rem 5%;
+      background: rgba(7, 20, 38, 0.98);
+      box-shadow: 0 8px 24px rgba(7, 20, 38, 0.35);
+      border-bottom-color: rgba(47, 128, 237, 0.2);
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--c-white);
+    }
+
+    .logo-icon-svg {
+      width: 32px;
+      height: 32px;
+      color: var(--c-blue-bright);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      color: var(--c-white);
+      line-height: 1.1;
+    }
+
+    .brand-tag {
+      font-size: 0.65rem;
+      letter-spacing: 1.5px;
+      color: var(--text-light-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .nav-links-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 2.2rem;
     }
 
     nav ul {
       display: flex;
       list-style: none;
-      gap: 2rem;
+      align-items: center;
+      gap: 1.8rem;
     }
 
     nav ul li a {
-      color: rgba(255,255,255,0.8);
+      color: var(--text-light-muted);
       font-weight: 500;
-      font-size: 0.95rem;
-      letter-spacing: 0.5px;
+      font-size: 0.93rem;
+      letter-spacing: 0.3px;
       position: relative;
+      padding: 0.4rem 0;
       transition: var(--transition);
     }
 
@@ -85,667 +320,2089 @@
       position: absolute;
       width: 0;
       height: 2px;
-      bottom: -4px;
+      bottom: 0;
       left: 0;
-      background-color: var(--accent);
+      background-color: var(--c-blue-bright);
+      border-radius: var(--radius-full);
       transition: var(--transition);
     }
 
-    nav ul li a:hover { color: white; }
-    nav ul li a:hover::after { width: 100%; }
-
-    /* Mobile Menu Toggle */
-    .mobile-menu-btn { display: none; color: white; font-size: 1.5rem; cursor: pointer; }
-
-    @media (max-width: 768px) {
-      nav { padding: 1rem; }
-      nav ul {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: var(--primary);
-        padding: 1rem;
-        text-align: center;
-      }
-      nav ul.show { display: flex; }
-      .mobile-menu-btn { display: block; }
+    nav ul li a:hover {
+      color: var(--c-white);
     }
 
-    /* ====== HERO SECTION ====== */
-    .hero {
-      height: 100vh;
+    nav ul li a:hover::after {
       width: 100%;
+    }
+
+    .nav-cta-btn {
+      padding: 0.6rem 1.4rem;
+      font-size: 0.88rem;
+    }
+
+    /* Mobile Menu Toggle */
+    .mobile-menu-btn {
+      display: none;
+      background: transparent;
+      color: var(--c-white);
+      cursor: pointer;
+      padding: 0.4rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: var(--transition);
+    }
+
+    .mobile-menu-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .mobile-menu-btn svg {
+      width: 26px;
+      height: 26px;
+      display: block;
+    }
+
+    /* ==========================================================================
+       2. HERO SECTION
+       ========================================================================== */
+    .hero {
       position: relative;
+      min-height: 92vh;
+      background: radial-gradient(circle at 80% 20%, #102B4E 0%, #0B1F3A 45%, #071426 100%);
+      color: var(--c-white);
       display: flex;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      background-color: var(--primary);
+      padding: 8.5rem 0 5rem 0;
       overflow: hidden;
     }
 
-    .hero-bg {
+    .hero-grid-bg {
       position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.75)),
-                  url('https://images.unsplash.com/photo-1562619425-c307bb83bc42?q=80&w=2070&auto=format&fit=crop') no-repeat center/cover;
-      animation: zoomSlow 20s infinite alternate;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(47, 128, 237, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(47, 128, 237, 0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 1;
     }
 
-    @keyframes zoomSlow {
-      from { transform: scale(1); }
-      to { transform: scale(1.1); }
+    .hero-glow {
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(47, 128, 237, 0.18) 0%, rgba(15, 76, 129, 0.05) 70%, transparent 100%);
+      top: 15%;
+      right: 10%;
+      filter: blur(50px);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-container {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3.5rem;
+      align-items: center;
     }
 
     .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 800px;
-      padding: 2rem;
-      color: white;
+      max-width: 650px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.45rem 1.1rem;
+      background: rgba(47, 128, 237, 0.12);
+      border: 1px solid rgba(47, 128, 237, 0.35);
+      border-radius: var(--radius-full);
+      color: var(--c-blue-bright);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badge svg {
+      width: 16px;
+      height: 16px;
     }
 
     .hero h1 {
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
-      line-height: 1.1;
+      font-size: clamp(2.4rem, 4.6vw, 3.6rem);
+      line-height: 1.18;
+      color: var(--c-white);
       margin-bottom: 1.5rem;
-      color: white;
-      text-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      animation: slideUp 1s ease-out;
+      font-weight: 800;
+      letter-spacing: -0.6px;
     }
 
-    .btn {
-      display: inline-block;
-      padding: 1rem 2.5rem;
-      background: var(--secondary);
-      color: white;
-      font-weight: 600;
-      border: none;
-      border-radius: 50px;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: var(--transition);
-      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
-    }
-    .btn a { text-decoration: none; color: white; }
-
-    .btn:hover {
-      background: var(--accent);
-      color: var(--primary);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(251, 191, 36, 0.4);
+    .hero h1 .highlight-blue {
+      color: var(--c-blue-bright);
     }
 
-    /* ====== ABOUT SECTION ====== */
-    .about {
-      padding: 6rem 5%;
-      background: white;
-      text-align: center;
+    .hero-desc {
+      font-size: 1.15rem;
+      line-height: 1.75;
+      color: var(--text-light-muted);
+      margin-bottom: 2.2rem;
+      max-width: 580px;
     }
 
-    .about h2 {
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-specs-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.6rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid rgba(216, 232, 248, 0.15);
+    }
+
+    .hero-spec-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      color: var(--text-light-muted);
+      font-weight: 500;
+    }
+
+    .hero-spec-item svg {
+      width: 18px;
+      height: 18px;
+      color: var(--c-blue-bright);
+      flex-shrink: 0;
+    }
+
+    /* Hero Visual Card */
+    .hero-visual-card {
       position: relative;
-      display: inline-block;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(145deg, rgba(20, 85, 147, 0.25), rgba(7, 20, 38, 0.6));
+      border: 1px solid rgba(47, 128, 237, 0.25);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-dark);
+      backdrop-filter: blur(10px);
     }
 
-    .about h2::after {
-      content: '';
-      display: block;
-      width: 60%;
-      height: 3px;
-      background: var(--accent);
-      margin: 10px auto 0;
+    .hero-image-wrapper {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      aspect-ratio: 4 / 3.2;
+      background: var(--c-navy-dark);
     }
 
-    .about-content {
-      max-width: 800px;
-      margin: 0 auto;
-      font-size: 1.2rem;
-      color: #475569;
+    .hero-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .hero-visual-card:hover .hero-image-wrapper img {
+      transform: scale(1.03);
+    }
+
+    .hero-floating-tag {
+      position: absolute;
+      bottom: -1rem;
+      left: 1.5rem;
+      background: var(--c-navy-darkest);
+      border: 1px solid var(--c-border-medium);
+      padding: 0.75rem 1.2rem;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-dark);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-floating-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
+      background: var(--c-blue-bright);
+      color: var(--c-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .hero-floating-icon svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .hero-floating-text h5 {
+      color: var(--c-white);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .hero-floating-text p {
+      color: var(--text-light-muted);
+      font-size: 0.75rem;
+      margin: 0;
+    }
+
+    /* ==========================================================================
+       3. ABOUT SECTION
+       ========================================================================== */
+    .about {
+      padding: 6.5rem 0;
+      background-color: var(--c-white);
+      position: relative;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-image-frame {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--c-border-subtle);
+      box-shadow: var(--shadow-md);
+      position: relative;
+      background: var(--c-blue-soft);
+    }
+
+    .about-image-frame img {
+      width: 100%;
+      height: 440px;
+      object-fit: cover;
+    }
+
+    .about-badge-card {
+      position: absolute;
+      bottom: -1rem;
+      right: -1rem;
+      background: var(--c-navy-dark);
+      color: var(--c-white);
+      padding: 1.4rem 1.6rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--c-border-medium);
+      box-shadow: var(--shadow-blue);
+      max-width: 240px;
+    }
+
+    .about-badge-card .num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--c-blue-bright);
+      line-height: 1;
+      font-family: var(--font-heading);
+      margin-bottom: 0.3rem;
+    }
+
+    .about-badge-card .label {
+      font-size: 0.85rem;
+      line-height: 1.4;
+      color: var(--text-light-muted);
+      font-weight: 500;
+    }
+
+    .about-content h2 {
+      font-size: clamp(2rem, 3.2vw, 2.5rem);
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.5px;
+    }
+
+    .about-lead {
+      font-size: 1.12rem;
+      line-height: 1.75;
+      color: var(--text-body);
+      margin-bottom: 1.2rem;
     }
 
     .highlight {
-      color: var(--secondary);
-      font-weight: 700;
-      background: rgba(59, 130, 246, 0.1);
-      padding: 0 5px;
+      color: var(--c-blue-deep);
+      font-weight: 600;
+      background: var(--c-blue-tint);
+      padding: 0.15rem 0.45rem;
       border-radius: 4px;
+      border: 1px solid rgba(47, 128, 237, 0.15);
     }
 
-    /* ====== GALLERY SECTION (UPDATED FOR SLIDER) ====== */
+    .about-secondary {
+      font-size: 1.02rem;
+      color: var(--text-secondary);
+      margin-bottom: 2.2rem;
+      line-height: 1.7;
+    }
+
+    .about-features-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+    }
+
+    .about-feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+      padding: 1.1rem;
+      background: var(--c-blue-soft);
+      border: 1px solid var(--c-border-subtle);
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+
+    .about-feature-item:hover {
+      border-color: var(--c-border-medium);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .about-feature-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: var(--radius-sm);
+      background: var(--c-blue-tint);
+      color: var(--c-blue-royal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .about-feature-icon svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .about-feature-text h4 {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 0.2rem;
+    }
+
+    .about-feature-text p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    /* ==========================================================================
+       4. LABEL GALLERY SECTION
+       ========================================================================== */
     .gallery {
-      padding: 6rem 5%;
-      background: var(--bg-light);
+      padding: 6.5rem 0;
+      background-color: var(--c-blue-soft);
+      border-top: 1px solid var(--c-border-subtle);
+      border-bottom: 1px solid var(--c-border-subtle);
+      position: relative;
     }
 
-    .gallery h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 3rem;
+    .gallery-controls-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 2.5rem;
+    }
+
+    .gallery-nav-buttons {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .gallery-nav-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-full);
+      background: var(--c-white);
+      border: 1px solid var(--c-border-medium);
+      color: var(--c-blue-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .gallery-nav-btn:hover {
+      background: var(--c-blue-bright);
+      color: var(--c-white);
+      border-color: var(--c-blue-bright);
+      transform: translateY(-2px);
+    }
+
+    .gallery-nav-btn svg {
+      width: 20px;
+      height: 20px;
     }
 
     /* Slider Container */
     .gallery-slider {
       display: flex;
-      gap: 2rem;
-      overflow-x: auto; /* Enables the "slide bar" / scrolling */
+      gap: 1.8rem;
+      overflow-x: auto;
       scroll-snap-type: x mandatory;
-      padding-bottom: 2rem; /* Space for scrollbar */
+      padding-bottom: 1.5rem;
       -webkit-overflow-scrolling: touch;
-      scrollbar-width: thin; /* Firefox: thinner scrollbar */
-      scrollbar-color: var(--secondary) #e2e8f0;
+      scrollbar-width: thin;
+      scrollbar-color: var(--c-blue-royal) var(--c-border-subtle);
     }
 
-    /* Custom Scrollbar Styling (Webkit) */
     .gallery-slider::-webkit-scrollbar {
-      height: 8px;
+      height: 6px;
     }
+
     .gallery-slider::-webkit-scrollbar-track {
-      background: #e2e8f0;
-      border-radius: 4px;
+      background: var(--c-border-subtle);
+      border-radius: var(--radius-full);
     }
+
     .gallery-slider::-webkit-scrollbar-thumb {
-      background: var(--secondary);
-      border-radius: 4px;
+      background: var(--c-blue-royal);
+      border-radius: var(--radius-full);
     }
 
     /* Individual Image Card */
     .gallery-card {
-      flex: 0 0 calc(33.333% - 1.33rem); /* Shows 3 images at a time */
+      flex: 0 0 calc(33.333% - 1.2rem);
       scroll-snap-align: start;
-      min-width: 300px;
+      min-width: 320px;
+      background: var(--c-white);
+      border: 1px solid var(--c-border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
     }
 
-    .gallery-card img {
+    .gallery-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--c-border-medium);
+    }
+
+    .gallery-card-thumb {
+      position: relative;
+      height: 300px;
+      overflow: hidden;
+      background: var(--c-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* NOTE: Natural colors of product images are strictly preserved */
+    .gallery-card-thumb img {
       width: 100%;
-      height: 350px;
+      height: 100%;
       object-fit: cover;
-      border-radius: 12px;
-      box-shadow: var(--shadow);
+      transition: transform 0.5s ease;
+      filter: none;
+    }
+
+    .gallery-card:hover .gallery-card-thumb img {
+      transform: scale(1.05);
+    }
+
+    .gallery-card-body {
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      border-top: 1px solid var(--c-border-subtle);
+    }
+
+    .gallery-card-body h4 {
+      font-size: 1.15rem;
+      margin-bottom: 0.4rem;
+      color: var(--text-heading);
+    }
+
+    .gallery-card-body p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* Lightbox Modal (Lightweight Vanilla JS & CSS) */
+    .lightbox-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(7, 20, 38, 0.92);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .lightbox-modal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 850px;
+      width: 100%;
+      background: var(--c-white);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--c-border-medium);
+      overflow: hidden;
+      box-shadow: var(--shadow-dark);
+      transform: scale(0.95);
+      transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .lightbox-modal.active .lightbox-content {
+      transform: scale(1);
+    }
+
+    .lightbox-img-wrapper {
+      width: 100%;
+      max-height: 72vh;
+      background: var(--c-navy-darkest);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .lightbox-img-wrapper img {
+      max-width: 100%;
+      max-height: 72vh;
+      object-fit: contain;
+    }
+
+    .lightbox-footer {
+      padding: 1.2rem 1.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--c-white);
+      border-top: 1px solid var(--c-border-subtle);
+    }
+
+    .lightbox-caption h4 {
+      font-size: 1.1rem;
+      color: var(--c-navy-dark);
+    }
+
+    .lightbox-close-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-full);
+      background: var(--c-blue-tint);
+      color: var(--c-blue-deep);
+      border: 1px solid var(--c-border-medium);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.2rem;
+      font-weight: 700;
       transition: var(--transition);
     }
 
-    .gallery-card img:hover {
-      transform: scale(1.03);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    .lightbox-close-btn:hover {
+      background: var(--c-blue-bright);
+      color: var(--c-white);
     }
 
-    /* Mobile Responsive: Show 1 image at a time */
-    @media (max-width: 768px) {
-      .gallery-card {
-        flex: 0 0 85%;
-        min-width: auto;
-      }
-    }
-
-    /* ====== SERVICES SECTION ====== */
+    /* ==========================================================================
+       5. SERVICES SECTION
+       ========================================================================== */
     .services {
-      padding: 6rem 5%;
-      background: white;
-    }
-
-    .services h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 4rem;
+      padding: 6.5rem 0;
+      background-color: var(--c-white);
     }
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2.5rem;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
     }
 
     .service-card {
-      background: white;
-      padding: 2.5rem;
-      border-radius: 16px;
-      border: 1px solid #e2e8f0;
-      text-align: center;
+      background: var(--c-white);
+      padding: 2.2rem 1.8rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--c-border-subtle);
       transition: var(--transition);
       position: relative;
-      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
     }
 
     .service-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-      border-color: var(--secondary);
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--c-border-medium);
     }
 
     .service-card::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; width: 100%; height: 5px;
-      background: var(--secondary);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s ease;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--c-blue-deep), var(--c-blue-bright));
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+      opacity: 0;
+      transition: var(--transition);
     }
-    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-card:hover::before {
+      opacity: 1;
+    }
 
     .service-icon-container {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 1.5rem;
+      width: 64px;
+      height: 64px;
+      margin-bottom: 1.6rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #eff6ff;
-      border-radius: 50%;
-      color: var(--secondary);
-      font-size: 2rem;
+      background: var(--c-blue-tint);
+      border: 1px solid var(--c-border-medium);
+      border-radius: var(--radius-sm);
+      color: var(--c-blue-deep);
+      transition: var(--transition);
     }
-    
-    .service-icon {
-        width: 60%;
-        height: 60%;
-        object-fit: contain;
+
+    .service-card:hover .service-icon-container {
+      background: var(--c-blue-bright);
+      color: var(--c-white);
+      transform: scale(1.05);
+    }
+
+    .service-icon-svg {
+      width: 32px;
+      height: 32px;
     }
 
     .service-card h3 {
-      margin-bottom: 1rem;
-      font-family: 'Outfit', sans-serif;
-      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      color: var(--text-heading);
     }
 
     .service-card p {
-      font-size: 0.95rem;
-      color: #64748b;
+      font-size: 0.93rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 0;
     }
 
-    /* ====== FEEDBACK SECTION ====== */
+    /* ==========================================================================
+       6. CLIENT FEEDBACK SECTION (FIREBASE INTEGRATION)
+       ========================================================================== */
     .feedback {
-      padding: 6rem 5%;
-      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      padding: 6.5rem 0;
+      background: radial-gradient(circle at 10% 20%, #F0F6FD 0%, #F8FAFD 100%);
+      border-top: 1px solid var(--c-border-subtle);
+      border-bottom: 1px solid var(--c-border-subtle);
     }
 
-    .feedback h2 {
-        text-align: center;
-        margin-bottom: 3rem;
-        font-size: 2.5rem;
+    .feedback-layout {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3.5rem;
+      align-items: flex-start;
+    }
+
+    .reviews-column-header {
+      margin-bottom: 1.8rem;
+    }
+
+    .reviews-column-header h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .reviews-column-header p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
     }
 
     .reviews-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 3rem;
+      grid-template-columns: 1fr;
+      gap: 1.3rem;
       list-style: none;
     }
 
     .review-card {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-      border-left: 4px solid var(--accent);
-      animation: fadeIn 0.5s ease;
+      background: var(--c-white);
+      padding: 1.6rem 1.8rem;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--c-border-subtle);
+      border-left: 4px solid var(--c-blue-royal);
+      animation: fadeIn 0.4s ease;
+      transition: var(--transition);
+    }
+
+    .review-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--c-border-medium);
     }
 
     .review-card h4 {
+      font-size: 1.1rem;
       font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: var(--primary);
+      color: var(--text-heading);
+      margin-bottom: 0.4rem;
     }
 
-    .review-stars { color: var(--accent); margin-bottom: 0.5rem; font-size: 1.2rem; }
+    /* CRITICAL: Stars MUST be Blue! */
+    .review-stars {
+      color: var(--c-blue-bright) !important;
+      font-size: 1.25rem;
+      letter-spacing: 2px;
+      line-height: 1;
+      margin-bottom: 0.6rem;
+    }
 
-    #review-form {
-      max-width: 500px;
-      margin: 0 auto;
-      background: white;
+    .review-card p {
+      font-size: 0.94rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Review Form Card */
+    .review-form-card {
+      background: var(--c-white);
       padding: 2.5rem;
-      border-radius: 16px;
-      box-shadow: var(--shadow);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--c-border-medium);
+      box-shadow: var(--shadow-md);
+      position: static; /* Naturally stacks on mobile and tablet */
+    }
+
+    /* Sticky ONLY on Desktop (>1024px) */
+    @media (min-width: 1025px) {
+      .review-form-card {
+        position: sticky;
+        top: 6rem;
+      }
+    }
+
+    .review-form-card-header {
+      margin-bottom: 1.8rem;
+    }
+
+    .review-form-card-header h3 {
+      font-size: 1.5rem;
+      color: var(--text-heading);
+      margin-bottom: 0.4rem;
+    }
+
+    .review-form-card-header p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-heading);
+      margin-bottom: 0.4rem;
     }
 
     input, textarea {
       width: 100%;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      font-family: inherit;
+      padding: 0.9rem 1.1rem;
+      border: 1px solid var(--c-border-subtle);
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      color: var(--text-heading);
+      background: var(--c-blue-soft);
       transition: var(--transition);
-      background: #f8fafc;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: var(--text-muted);
+      opacity: 0.8;
     }
 
     input:focus, textarea:focus {
       outline: none;
-      border-color: var(--secondary);
-      background: white;
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      background: var(--c-white);
+      border-color: var(--c-blue-bright);
+      box-shadow: 0 0 0 3px rgba(47, 128, 237, 0.15);
+    }
+
+    /* Star Rating Selector (BLUE & WHITE ONLY) */
+    .star-rating-box {
+      background: var(--c-blue-soft);
+      border: 1px solid var(--c-border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 1.1rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .star-rating-box label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .stars {
-      display: flex;
+      display: inline-flex;
       justify-content: center;
       gap: 0.5rem;
-      margin-bottom: 1.5rem;
-      font-size: 2rem;
+      font-size: 2.2rem;
       cursor: pointer;
+      user-select: none;
+      line-height: 1;
     }
 
-    .star { color: #cbd5e1; transition: color 0.2s; }
-    .star:hover, .star.selected { color: var(--accent); }
+    .star {
+      color: var(--star-inactive);
+      transition: color 0.18s ease, transform 0.18s ease;
+      display: inline-block;
+    }
 
-    button[type="submit"] {
-      width: 100%;
-      padding: 1rem;
-      background: var(--primary);
-      color: white;
-      border: none;
-      border-radius: 8px;
+    .star:hover {
+      transform: scale(1.15);
+      color: var(--star-hover);
+    }
+
+    .star.selected {
+      color: var(--star-active);
+    }
+
+    /* Blue-and-White Feedback Messages */
+    .feedback-response {
+      text-align: center;
+      margin-top: 1rem;
       font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
+      min-height: 1.5rem;
+      font-size: 0.9rem;
+      padding: 0.6rem 1rem;
+      border-radius: var(--radius-sm);
+      display: none;
     }
 
-    button[type="submit"]:hover { background: var(--secondary); }
-    button[type="submit"]:disabled { background: #94a3b8; cursor: not-allowed; }
-
-    .feedback-response { 
-        text-align: center; 
-        margin-top: 1rem; 
-        font-weight: 600; 
-        min-height: 1.5rem;
-        font-size: 0.9rem;
+    .feedback-response:not(:empty) {
+      display: block;
     }
-    .text-success { color: #16a34a; }
-    .text-error { color: #dc2626; }
 
-    /* ====== LOCATION ====== */
-    .location {
-      padding: 0;
-      height: 400px;
-      position: relative;
+    .text-success {
+      color: var(--c-navy-dark);
+      background-color: var(--c-blue-tint);
+      border: 1px solid var(--c-border-medium);
     }
-    
+
+    .text-error {
+      color: var(--c-navy-darkest);
+      background-color: #E2ECF8;
+      border: 1px solid #B4D1F3;
+    }
+
+    /* ==========================================================================
+       7. LOCATION SECTION (GOOGLE MAPS)
+       ========================================================================== */
+    .location-section {
+      padding: 6.5rem 0 5rem 0;
+      background-color: var(--c-white);
+    }
+
+    .location-card-container {
+      background: var(--c-white);
+      border: 1px solid var(--c-border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      display: grid;
+      grid-template-columns: 1fr 340px;
+    }
+
     .map-container {
       width: 100%;
-      height: 100%;
+      height: 450px;
+      position: relative;
+      background: var(--c-blue-ice);
     }
-    
+
+    /* NOTE: Natural colors of Google Maps embed are strictly preserved */
     .map-container iframe {
-        width: 100%;
-        height: 100%;
-        border: 0;
-        filter: grayscale(100%);
-        transition: filter 0.3s;
-    }
-    
-    .map-container iframe:hover {
-        filter: grayscale(0%);
+      width: 100%;
+      height: 100%;
+      border: 0;
+      filter: none !important;
     }
 
-    /* ====== CONTACT ====== */
-    .contact {
-      padding: 6rem 5%;
-      background: var(--primary);
-      color: white;
-    }
-
-    .contact-content {
-      max-width: 1100px;
-      margin: 0 auto;
+    .location-info-panel {
+      padding: 2.5rem 2rem;
+      background: var(--c-blue-soft);
+      border-left: 1px solid var(--c-border-subtle);
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .location-info-panel h4 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-heading);
+    }
+
+    .location-info-panel p {
+      font-size: 0.94rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .location-spec-list {
+      list-style: none;
+      margin-bottom: 1.8rem;
+    }
+
+    .location-spec-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      font-size: 0.92rem;
+      color: var(--text-body);
+    }
+
+    .location-spec-list li svg {
+      width: 18px;
+      height: 18px;
+      color: var(--c-blue-royal);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* ==========================================================================
+       8. CONTACT SECTION (EMAILJS INTEGRATION)
+       ========================================================================== */
+    .contact {
+      padding: 6.5rem 0;
+      background: radial-gradient(circle at 85% 15%, #102B4E 0%, #0B1F3A 50%, #071426 100%);
+      color: var(--c-white);
+      position: relative;
+    }
+
+    .contact-grid-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(47, 128, 237, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(47, 128, 237, 0.04) 1px, transparent 1px);
+      background-size: 36px 36px;
+      pointer-events: none;
+    }
+
+    .contact-container {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
       gap: 4rem;
       align-items: center;
     }
 
-    .contact-info {
-      flex: 1;
-      min-width: 300px;
+    .contact-info-col h2 {
+      font-size: clamp(2.2rem, 3.6vw, 2.8rem);
+      color: var(--c-white);
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.5px;
     }
 
-    .contact-info h3 {
-      color: white;
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .contact-info p {
-      margin-bottom: 1rem;
+    .contact-info-col p.lead-text {
       font-size: 1.1rem;
-      opacity: 0.9;
+      color: var(--text-light-muted);
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
     }
 
-    #contact-form {
-      flex: 1.5;
-      min-width: 300px;
+    .contact-channels {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-channel-item {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 1.2rem 1.4rem;
+      background: rgba(14, 34, 61, 0.7);
+      border: 1px solid rgba(47, 128, 237, 0.22);
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+
+    .contact-channel-item:hover {
+      background: rgba(20, 85, 147, 0.35);
+      border-color: var(--c-blue-bright);
+      transform: translateX(4px);
+    }
+
+    .channel-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      background: var(--c-blue-bright);
+      color: var(--c-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .channel-icon svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .channel-details h5 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-light-muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .channel-details a, .channel-details span {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--c-white);
+    }
+
+    .channel-details a:hover {
+      color: var(--c-blue-bright);
+    }
+
+    /* Contact Form White Card */
+    .contact-card-wrapper {
+      background: var(--c-white);
+      padding: 3rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--c-border-medium);
+      box-shadow: var(--shadow-dark);
+    }
+
+    .contact-card-header {
+      margin-bottom: 2rem;
+    }
+
+    .contact-card-header h3 {
+      font-size: 1.6rem;
+      color: var(--text-heading);
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-card-header p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
     }
 
     #contact-form input, #contact-form textarea {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      color: white;
-    }
-
-    #contact-form input::placeholder, #contact-form textarea::placeholder {
-      color: rgba(255,255,255,0.5);
+      background: var(--c-blue-soft);
+      border: 1px solid var(--c-border-subtle);
+      color: var(--text-heading);
     }
 
     #contact-form input:focus, #contact-form textarea:focus {
-      background: rgba(255,255,255,0.1);
-      border-color: var(--secondary);
+      background: var(--c-white);
+      border-color: var(--c-blue-bright);
+      box-shadow: 0 0 0 3px rgba(47, 128, 237, 0.15);
     }
 
-    /* ====== FOOTER ====== */
+    #contact-form input::placeholder, #contact-form textarea::placeholder {
+      color: var(--text-muted);
+    }
+
+    /* Form Submit Button */
+    .submit-btn {
+      width: 100%;
+      padding: 1.1rem;
+      background: var(--c-blue-deep);
+      color: var(--c-white);
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+
+    .submit-btn:hover {
+      background: var(--c-blue-bright);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-blue);
+    }
+
+    .submit-btn:disabled {
+      background: #8FAECF;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* ==========================================================================
+       9. FOOTER
+       ========================================================================== */
     footer {
-      background: #020617; 
-      padding: 2rem 5%;
-      text-align: center;
-      color: rgba(255,255,255,0.6);
-      font-size: 0.9rem;
+      background: var(--c-navy-darkest);
+      color: var(--text-light-muted);
+      padding: 4.5rem 0 2rem 0;
+      border-top: 1px solid rgba(216, 232, 248, 0.1);
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 3.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .footer-brand h4 {
+      color: var(--c-white);
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--text-light-muted);
+      max-width: 380px;
+    }
+
+    .footer-col h5 {
+      color: var(--c-white);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.5px;
     }
 
     .footer-links {
-      display: flex;
-      justify-content: center;
       list-style: none;
-      gap: 2rem;
-      margin-bottom: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .footer-links li a {
+      color: var(--text-light-muted);
+      font-size: 0.9rem;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .footer-links li a:hover {
+      color: var(--c-blue-bright);
+      transform: translateX(3px);
+    }
+
+    .footer-contact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      font-size: 0.9rem;
+    }
+
+    .footer-contact-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .footer-contact-list li svg {
+      width: 16px;
+      height: 16px;
+      color: var(--c-blue-bright);
+      flex-shrink: 0;
+    }
+
+    .footer-bottom {
+      padding-top: 2rem;
+      border-top: 1px solid rgba(216, 232, 248, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: var(--text-light-muted);
       flex-wrap: wrap;
+      gap: 1rem;
     }
 
-    .footer-links a:hover { color: var(--secondary); }
-
-    /* Animations */
-    @keyframes slideUp {
-      from { transform: translateY(30px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
+    /* ==========================================================================
+       ANIMATIONS & MEDIA QUERIES
+       ========================================================================== */
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Responsive */
+    /* Mobile & Tablet Responsiveness */
+    @media (max-width: 1024px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .gallery-card {
+        flex: 0 0 calc(50% - 1rem);
+      }
+      .about-grid, .hero-container, .contact-container, .feedback-layout {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .location-card-container {
+        grid-template-columns: 1fr;
+      }
+      .location-info-panel {
+        border-left: none;
+        border-top: 1px solid var(--c-border-subtle);
+      }
+      .about-badge-card {
+        right: 1rem;
+        bottom: 1rem;
+      }
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
     @media (max-width: 768px) {
-      .hero h1 { font-size: 2.5rem; }
-      .contact-content { flex-direction: column; }
+      nav {
+        padding: 0.9rem 1.5rem;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .nav-links-wrapper {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 360px;
+        height: 100vh;
+        background: var(--c-navy-darkest);
+        border-left: 1px solid rgba(47, 128, 237, 0.2);
+        padding: 5rem 2rem 2rem 2rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+        box-shadow: -10px 0 30px rgba(7, 20, 38, 0.8);
+        transition: right 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+        z-index: 1001;
+      }
+
+      .nav-links-wrapper.active {
+        right: 0;
+      }
+
+      .mobile-nav-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(7, 20, 38, 0.7);
+        backdrop-filter: blur(4px);
+        z-index: 1000;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+
+      .mobile-nav-backdrop.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+        width: 100%;
+      }
+
+      nav ul li {
+        width: 100%;
+      }
+
+      nav ul li a {
+        font-size: 1.15rem;
+        display: block;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .nav-cta-btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .mobile-close-btn {
+        position: absolute;
+        top: 1.2rem;
+        right: 1.5rem;
+        background: transparent;
+        color: var(--c-white);
+        font-size: 1.6rem;
+        cursor: pointer;
+        padding: 0.4rem;
+      }
+
+      .hero {
+        padding: 7rem 0 4rem 0;
+      }
+
+      .gallery-card {
+        flex: 0 0 88%;
+        min-width: 280px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-features-list {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-card-wrapper {
+        padding: 2rem 1.5rem;
+      }
+
+      .review-form-card {
+        padding: 2rem 1.5rem;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    /* Accessibility: Respect Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <div class="logo">SHREE LABELS</div>
-    <div class="mobile-menu-btn" onclick="document.querySelector('nav ul').classList.toggle('show')">☰</div>
-    <ul>
-      <li><a href="#hero">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#feedback">Feedback</a></li>
-      <li><a href="#location">Location</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <section id="hero" class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-content">
-      <h1>Where Precision Meets<br><span style="color: var(--accent);">Sustainability</span></h1>
-      <button class="btn"><a href="#gallery">Explore Our Work</a></button>
-    </div>
-  </section>
-
-  <section id="about" class="about">
-    <h2>About Us</h2>
-    <div class="about-content">
-      <p>
-        At Shree Labels, we deliver <span class="highlight">high-quality offset-printed labels</span> that bring your brand to life. Based in <span class="highlight">Karur, Tamil Nadu</span>, we specialize in <span class="highlight">cotton tape, taffeta, satin, and custom label solutions</span> with precision printing and vibrant finishes.
-      </p>
-      <br>
-      <p>
-        Our focus is on <span class="highlight">quality, timely delivery, and eco-friendly practices</span>, making us a trusted partner for businesses across industries.
-      </p>
-    </div>
-  </section>
-
-  <section id="gallery" class="gallery">
-    <h2>Label Samples</h2>
-    
-    <div class="gallery-slider">
-
-      <div class="gallery-card">
-        <img src="gallery/label1.jpeg" alt="Clothing Label Sample 1">
-      </div>
-
-      <div class="gallery-card">
-        <img src="gallery/label2.jpeg" alt="Label Sample 2">
-      </div>
-
-      <div class="gallery-card">
-        <img src="gallery/label3.jpeg" alt="Label Sample 3">
-      </div>
-
-      <div class="gallery-card">
-        <img src="gallery/label4.jpeg" alt="Label Sample 4">
-      </div>
-
-      <div class="gallery-card">
-        <img src="gallery/label5.jpeg" alt="Label Sample 5">
-      </div>
-
-      <div class="gallery-card">
-        <img src="gallery/label6.jpeg" alt="Label Sample 6">
-      </div>
-
-    </div>
-  </section>
-
-  <section id="services" class="services">
-    <h2>Our Expertise</h2>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon-container">
-          <img src="https://cdn-icons-png.flaticon.com/512/2920/2920329.png" alt="Label Icon" class="service-icon">
+  <!-- ==========================================================================
+       1. NAVIGATION BAR
+       ========================================================================== -->
+  <header id="site-header">
+    <nav>
+      <a href="#hero" class="brand-logo" aria-label="Shree Labels Home">
+        <svg class="logo-icon-svg" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="4" width="24" height="24" rx="4" />
+          <path d="M4 12h24" />
+          <path d="M12 4v24" />
+          <circle cx="20" cy="20" r="3" fill="currentColor" />
+        </svg>
+        <div class="brand-text">
+          <span class="brand-title">SHREE LABELS</span>
+          <span class="brand-tag">Karur, Tamil Nadu</span>
         </div>
-        <h3>Label Printing</h3>
-        <p>Premium quality woven and printed labels with perfect finishing for the apparel industry.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon-container">
-          <img src="https://cdn-icons-png.flaticon.com/512/265/265667.png" alt="Sticker Icon" class="service-icon">
-        </div>
-        <h3>Sticker Printing</h3>
-        <p>Custom stickers with vibrant colors, durable adhesive, and weather-resistant coatings.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon-container">
-          <img src="https://cdn-icons-png.flaticon.com/512/2920/2920349.png" alt="Offset Icon" class="service-icon">
-        </div>
-        <h3>Offset Printing</h3>
-        <p>High-volume commercial printing with superior color accuracy and sharp details.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon-container">
-          <img src="https://cdn-icons-png.flaticon.com/512/679/679922.png" alt="Finishing Icon" class="service-icon">
-        </div>
-        <h3>Custom Finishing</h3>
-        <p>Embossing, debossing, and spot UV coating to make your brand products stand out.</p>
-      </div>
-    </div>
-  </section>
+      </a>
 
-  <section id="feedback" class="feedback">
-    <h2>Client Feedback</h2>
-
-    <ul id="review-list" class="reviews-grid">
+      <!-- Desktop Nav & Mobile Drawer Container -->
+      <div class="nav-links-wrapper" id="nav-drawer">
+        <button class="mobile-close-btn" id="mobile-menu-close" aria-label="Close Navigation Menu">✕</button>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#feedback">Feedback</a></li>
+          <li><a href="#location">Location</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
-
-    <form id="review-form">
-      <h3>Leave a Review</h3>
-      <input type="text" id="reviewer-name" name="name" placeholder="Your Name" required>
-      <input type="email" id="reviewer-email" name="email" placeholder="Your Email (for verification)" required>
-      <textarea id="review-text" name="message" rows="4" placeholder="Share your experience..." required></textarea>
-      
-      <div class="stars">
-        <span class="star" data-value="1">★</span>
-        <span class="star" data-value="2">★</span>
-        <span class="star" data-value="3">★</span>
-        <span class="star" data-value="4">★</span>
-        <span class="star" data-value="5">★</span>
+        <a href="#contact" class="btn btn-primary nav-cta-btn">Contact Us</a>
       </div>
-      
-      <button type="submit" id="submit-review-btn">Submit Feedback</button>
-      <p id="review-response" class="feedback-response"></p>
-    </form>
-  </section>
 
-  <section id="location" class="location">
-    <div class="map-container">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1337.9796498319527!2d78.06319673050042!3d10.96456725315808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baa2f4562bf8255%3A0x81dab99d13c9ba73!2sShree%20Labels!5e1!3m2!1sen!2sin!4v1757053264006!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+      <!-- Hamburger Button -->
+      <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </nav>
+    <div class="mobile-nav-backdrop" id="nav-backdrop"></div>
+  </header>
+
+  <!-- ==========================================================================
+       2. HERO SECTION
+       ========================================================================== -->
+  <section id="hero" class="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-glow"></div>
+    <div class="container hero-container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <span>Where Precision Meets Sustainability</span>
+        </div>
+        
+        <h1>Precision Labels.<br><span class="highlight-blue">Made to Represent Your Brand.</span></h1>
+        
+        <p class="hero-desc">
+          At Shree Labels, we deliver high-quality offset-printed labels that bring your brand to life. Based in Karur, Tamil Nadu, we specialize in cotton tape, taffeta, satin, and custom label solutions with precision printing and vibrant finishes.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#gallery" class="btn btn-primary">
+            <span>Explore Our Work</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="#contact" class="btn btn-outline-white">
+            <span>Get a Free Quote</span>
+          </a>
+        </div>
+
+        <div class="hero-specs-strip">
+          <div class="hero-spec-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>High Quality</span>
+          </div>
+          <div class="hero-spec-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Timely Delivery</span>
+          </div>
+          <div class="hero-spec-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Eco-Friendly Practices</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-visual-card">
+          <div class="hero-image-wrapper">
+            <img src="gallery/label1.jpeg" alt="Cotton Label Sample manufactured by Shree Labels in Karur">
+          </div>
+          <div class="hero-floating-tag">
+            <div class="hero-floating-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="m9 12 2 2 4-4"></path>
+              </svg>
+            </div>
+            <div class="hero-floating-text">
+              <h5>Label Sample</h5>
+              <p>Karur, Tamil Nadu</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
+  <!-- ==========================================================================
+       3. ABOUT SHREE LABELS
+       ========================================================================== -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual">
+          <div class="about-image-frame">
+            <img src="gallery/press.webp" alt="Printing Press at Shree Labels facility">
+          </div>
+          <div class="about-badge-card">
+            <div class="num">Karur</div>
+            <div class="label">Tamil Nadu, India</div>
+          </div>
+        </div>
+
+        <div class="about-content">
+          <div class="badge-pill">About Us</div>
+          <h2>Where Precision Meets Sustainability</h2>
+          
+          <p class="about-lead">
+            At Shree Labels, we deliver <span class="highlight">high-quality offset-printed labels</span> that bring your brand to life. Based in <span class="highlight">Karur, Tamil Nadu</span>, we specialize in <span class="highlight">cotton tape, taffeta, satin, and custom label solutions</span> with precision printing and vibrant finishes.
+          </p>
+
+          <p class="about-secondary">
+            Our focus is on <span class="highlight">quality, timely delivery, and eco-friendly practices</span>, making us a trusted partner for businesses across industries.
+          </p>
+
+          <div class="about-features-list">
+            <div class="about-feature-item">
+              <div class="about-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              </div>
+              <div class="about-feature-text">
+                <h4>Precision Printing</h4>
+                <p>Sharp printing details with vibrant color finishes on every label.</p>
+              </div>
+            </div>
+
+            <div class="about-feature-item">
+              <div class="about-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              </div>
+              <div class="about-feature-text">
+                <h4>Quality Finishing</h4>
+                <p>Carefully finished labels designed for durability and comfort.</p>
+              </div>
+            </div>
+
+            <div class="about-feature-item">
+              <div class="about-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              </div>
+              <div class="about-feature-text">
+                <h4>Timely Delivery</h4>
+                <p>Prompt dispatch schedules that you can depend on.</p>
+              </div>
+            </div>
+
+            <div class="about-feature-item">
+              <div class="about-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+              </div>
+              <div class="about-feature-text">
+                <h4>Custom Solutions</h4>
+                <p>Tailored cotton tape, taffeta, satin, and custom label options.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       4. LABEL GALLERY
+       ========================================================================== -->
+  <section id="gallery" class="gallery">
+    <div class="container">
+      <div class="gallery-controls-bar">
+        <div>
+          <div class="badge-pill">Gallery</div>
+          <h2 class="section-title" style="text-align: left; margin-bottom: 0.4rem;">Our Label Work</h2>
+          <p class="section-subtitle" style="text-align: left; margin: 0;">Explore a selection of label solutions created with precision and attention to detail.</p>
+        </div>
+        
+        <div class="gallery-nav-buttons">
+          <button class="gallery-nav-btn" id="gallery-prev" aria-label="Previous Gallery Slide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          </button>
+          <button class="gallery-nav-btn" id="gallery-next" aria-label="Next Gallery Slide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Preserved Gallery Images in Modern Carousel Cards (Natural Photo Colors) -->
+      <div class="gallery-slider" id="gallery-slider">
+        
+        <div class="gallery-card" data-full="gallery/label1.jpeg" data-title="Clothing Label Sample 1">
+          <div class="gallery-card-thumb">
+            <img src="gallery/label1.jpeg" alt="Clothing Label Sample 1" loading="lazy">
+          </div>
+          <div class="gallery-card-body">
+            <h4>Clothing Label Sample 1</h4>
+            <p>Printed label sample showcasing fine detail and quality finishing.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-full="gallery/label2.jpeg" data-title="Label Sample 2">
+          <div class="gallery-card-thumb">
+            <img src="gallery/label2.jpeg" alt="Label Sample 2" loading="lazy">
+          </div>
+          <div class="gallery-card-body">
+            <h4>Label Sample 2</h4>
+            <p>Custom printed label solution with crisp print resolution.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-full="gallery/label3.jpeg" data-title="Label Sample 3">
+          <div class="gallery-card-thumb">
+            <img src="gallery/label3.jpeg" alt="Label Sample 3" loading="lazy">
+          </div>
+          <div class="gallery-card-body">
+            <h4>Label Sample 3</h4>
+            <p>Durable printed label sample with clean typography.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-full="gallery/label4.jpeg" data-title="Label Sample 4">
+          <div class="gallery-card-thumb">
+            <img src="gallery/label4.jpeg" alt="Label Sample 4" loading="lazy">
+          </div>
+          <div class="gallery-card-body">
+            <h4>Label Sample 4</h4>
+            <p>Smooth finish label designed for apparel and packaging applications.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-full="gallery/label5.jpeg" data-title="Label Sample 5">
+          <div class="gallery-card-thumb">
+            <img src="gallery/label5.jpeg" alt="Label Sample 5" loading="lazy">
+          </div>
+          <div class="gallery-card-body">
+            <h4>Label Sample 5</h4>
+            <p>Custom label with vibrant colors and precise dimensions.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-full="gallery/label6.jpeg" data-title="Label Sample 6">
+          <div class="gallery-card-thumb">
+            <img src="gallery/label6.jpeg" alt="Label Sample 6" loading="lazy">
+          </div>
+          <div class="gallery-card-body">
+            <h4>Label Sample 6</h4>
+            <p>Quality adhesive and label sample for industrial branding.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal for Image Inspection (Lightweight Vanilla JS) -->
+  <div class="lightbox-modal" id="gallery-lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="lightbox-content">
+      <div class="lightbox-img-wrapper">
+        <img id="lightbox-img" src="" alt="Label Preview">
+      </div>
+      <div class="lightbox-footer">
+        <div class="lightbox-caption">
+          <h4 id="lightbox-title">Label Sample</h4>
+        </div>
+        <button class="lightbox-close-btn" id="lightbox-close" aria-label="Close Preview">✕</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       5. SERVICES / EXPERTISE
+       ========================================================================== -->
+  <section id="services" class="services">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge-pill">Services</div>
+        <h2 class="section-title">Our Expertise</h2>
+        <p class="section-subtitle">Dedicated printing and custom finishing services for the apparel and packaging industry.</p>
+      </div>
+
+      <div class="services-grid">
+        <!-- Service 1: Label Printing -->
+        <div class="service-card">
+          <div class="service-icon-container">
+            <svg class="service-icon-svg" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 4h18a2 2 0 0 1 2 2v20a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path>
+              <line x1="10" y1="9" x2="22" y2="9"></line>
+              <line x1="10" y1="14" x2="18" y2="14"></line>
+              <circle cx="20" cy="21" r="2.5"></circle>
+            </svg>
+          </div>
+          <h3>Label Printing</h3>
+          <p>Premium quality woven and printed labels with perfect finishing for the apparel industry.</p>
+        </div>
+
+        <!-- Service 2: Sticker Printing -->
+        <div class="service-card">
+          <div class="service-icon-container">
+            <svg class="service-icon-svg" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M28 16c0 6.627-5.373 12-12 12S4 22.627 4 16 9.373 4 16 4c2.5 0 4.8 0.77 6.7 2.1L28 16z"></path>
+              <path d="M16 4v12h12"></path>
+            </svg>
+          </div>
+          <h3>Sticker Printing</h3>
+          <p>Custom stickers with vibrant colors, durable adhesive, and weather-resistant coatings.</p>
+        </div>
+
+        <!-- Service 3: Offset Printing -->
+        <div class="service-card">
+          <div class="service-icon-container">
+            <svg class="service-icon-svg" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="11" width="22" height="15" rx="2"></rect>
+              <path d="M9 11V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v5"></path>
+              <line x1="10" y1="18" x2="22" y2="18"></line>
+            </svg>
+          </div>
+          <h3>Offset Printing</h3>
+          <p>High-volume commercial printing with superior color accuracy and sharp details.</p>
+        </div>
+
+        <!-- Service 4: Custom Finishing -->
+        <div class="service-card">
+          <div class="service-icon-container">
+            <svg class="service-icon-svg" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="16 3 21 12 30 13 23 20 25 29 16 24 7 29 9 20 2 13 11 12 16 3"></polygon>
+            </svg>
+          </div>
+          <h3>Custom Finishing</h3>
+          <p>Embossing, debossing, and spot UV coating to make your brand products stand out.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       6. CLIENT FEEDBACK (CRITICAL FIREBASE SECTION)
+       ========================================================================== -->
+  <section id="feedback" class="feedback">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge-pill">Feedback</div>
+        <h2 class="section-title">Client Feedback</h2>
+        <p class="section-subtitle">Real experiences and feedback from our valued clients.</p>
+      </div>
+
+      <div class="feedback-layout">
+        
+        <!-- Column 1: Live Real-Time Reviews List -->
+        <div class="reviews-display-col">
+          <div class="reviews-column-header">
+            <h3>Recent Reviews</h3>
+            <p>Loaded in real time from our feedback records.</p>
+          </div>
+
+          <!-- PRESERVED ID: review-list -->
+          <ul id="review-list" class="reviews-grid">
+            <li class="review-card" style="text-align: center; color: var(--text-muted);">
+              <p>Loading recent reviews...</p>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column 2: Review Submission Form Card -->
+        <div class="review-form-card">
+          <div class="review-form-card-header">
+            <h3>Leave a Review</h3>
+            <p>Share your experience with Shree Labels.</p>
+          </div>
+
+          <!-- PRESERVED ID: review-form -->
+          <form id="review-form">
+            <div class="form-group">
+              <label class="form-label" for="reviewer-name">Your Name</label>
+              <!-- PRESERVED ID: reviewer-name -->
+              <input type="text" id="reviewer-name" name="name" placeholder="Your Name" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="reviewer-email">Your Email</label>
+              <!-- PRESERVED ID: reviewer-email -->
+              <input type="email" id="reviewer-email" name="email" placeholder="Your Email (for verification)" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="review-text">Your Feedback</label>
+              <!-- PRESERVED ID: review-text -->
+              <textarea id="review-text" name="message" rows="4" placeholder="Share your experience..." required></textarea>
+            </div>
+            
+            <div class="star-rating-box">
+              <label>Select Rating</label>
+              <!-- PRESERVED CLASS & DATA-VALUES: .stars and .star with data-value -->
+              <div class="stars" role="radiogroup" aria-label="Rating Stars">
+                <span class="star" data-value="1" title="1 Star">★</span>
+                <span class="star" data-value="2" title="2 Stars">★</span>
+                <span class="star" data-value="3" title="3 Stars">★</span>
+                <span class="star" data-value="4" title="4 Stars">★</span>
+                <span class="star" data-value="5" title="5 Stars">★</span>
+              </div>
+            </div>
+            
+            <!-- PRESERVED ID: submit-review-btn -->
+            <button type="submit" id="submit-review-btn" class="submit-btn">
+              <span>Submit Feedback</span>
+            </button>
+
+            <!-- PRESERVED ID: review-response -->
+            <p id="review-response" class="feedback-response"></p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       7. LOCATION SECTION (GOOGLE MAPS)
+       ========================================================================== -->
+  <section id="location" class="location-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge-pill">Location</div>
+        <h2 class="section-title">Visit Shree Labels</h2>
+        <p class="section-subtitle">Located in Karur, Tamil Nadu</p>
+      </div>
+
+      <div class="location-card-container">
+        <!-- PRESERVED GOOGLE MAPS IFRAME (Natural Colors - No Filters) -->
+        <div class="map-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1337.9796498319527!2d78.06319673050042!3d10.96456725315808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baa2f4562bf8255%3A0x81dab99d13c9ba73!2sShree%20Labels!5e1!3m2!1sen!2sin!4v1757053264006!5m2!1sen!2sin" 
+            title="Google Maps Location of Shree Labels in Karur"
+            allowfullscreen="" 
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+        <div class="location-info-panel">
+          <div>
+            <h4>Shree Labels</h4>
+            <p>Visit our facility in Karur for printing inquiries and label consultations.</p>
+            
+            <ul class="location-spec-list">
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span>Karur, Tamil Nadu, India</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                <span>+91 94422 43337</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <span>shreelabelskrr@gmail.com</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Location link derived directly from the exact embed coordinates (10.964567, 78.063197) -->
+          <a href="https://www.google.com/maps/search/?api=1&query=10.964567,78.063197" target="_blank" rel="noopener noreferrer" class="btn btn-outline-blue" style="width: 100%;">
+            <span>Open in Google Maps</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       8. CONTACT SECTION (CRITICAL EMAILJS SECTION)
+       ========================================================================== -->
   <section id="contact" class="contact">
-    <div class="contact-content">
-      <div class="contact-info">
-        <h3>Get in Touch</h3>
-        <p>Ready to start your project? Contact us today for a free quote.</p>
-        <br>
-        <p><strong>Email:</strong> shreelabelskrr@gmail.com</p>
-        <p><strong>Phone:</strong> +91 94422 43337</p>
-        <p><strong>Address:</strong> Karur, Tamil Nadu, India</p>
+    <div class="contact-grid-bg"></div>
+    <div class="container contact-container">
+      
+      <!-- Contact Info Left Column -->
+      <div class="contact-info-col">
+        <div class="badge-pill" style="background: rgba(47, 128, 237, 0.15); border-color: rgba(47, 128, 237, 0.35); color: var(--c-blue-bright);">Contact</div>
+        <h2>Get in Touch</h2>
+        <p class="lead-text">
+          Ready to start your project? Contact us today for a free quote.
+        </p>
+
+        <div class="contact-channels">
+          <div class="contact-channel-item">
+            <div class="channel-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </div>
+            <div class="channel-details">
+              <h5>Email</h5>
+              <a href="mailto:shreelabelskrr@gmail.com">shreelabelskrr@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="contact-channel-item">
+            <div class="channel-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            </div>
+            <div class="channel-details">
+              <h5>Phone</h5>
+              <a href="tel:+919442243337">+91 94422 43337</a>
+            </div>
+          </div>
+
+          <div class="contact-channel-item">
+            <div class="channel-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            </div>
+            <div class="channel-details">
+              <h5>Address</h5>
+              <span>Karur, Tamil Nadu, India</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <form id="contact-form">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" rows="5" placeholder="How can we help you?" required></textarea>
-        <button type="submit" id="contact-submit-btn">Send Message</button>
-        <p id="contact-response" class="feedback-response" style="color: white;"></p>
-      </form>
+
+      <!-- Contact Form Right Column (Card) -->
+      <div class="contact-card-wrapper">
+        <div class="contact-card-header">
+          <h3>Send a Message</h3>
+          <p>Fill out the form below and we will get back to you promptly.</p>
+        </div>
+
+        <!-- PRESERVED ID: contact-form -->
+        <form id="contact-form">
+          <div class="form-group">
+            <label class="form-label" for="contact-name">Your Name</label>
+            <!-- PRESERVED NAME: name -->
+            <input type="text" id="contact-name" name="name" placeholder="Your Name" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contact-email">Your Email</label>
+            <!-- PRESERVED NAME: email -->
+            <input type="email" id="contact-email" name="email" placeholder="Your Email" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contact-message">Message</label>
+            <!-- PRESERVED NAME: message -->
+            <textarea id="contact-message" name="message" rows="5" placeholder="How can we help you?" required></textarea>
+          </div>
+
+          <!-- PRESERVED ID: contact-submit-btn -->
+          <button type="submit" id="contact-submit-btn" class="submit-btn" style="background: var(--c-blue-bright);">
+            <span>Send Message</span>
+          </button>
+
+          <!-- PRESERVED ID: contact-response -->
+          <p id="contact-response" class="feedback-response"></p>
+        </form>
+      </div>
+
     </div>
   </section>
 
+  <!-- ==========================================================================
+       9. FOOTER
+       ========================================================================== -->
   <footer>
-    <ul class="footer-links">
-      <li><a href="#hero">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#feedback">Feedback</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <p>© 2025 Shree Labels. All rights reserved.</p>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h4>SHREE LABELS</h4>
+          <p>
+            Delivering high-quality offset-printed labels, cotton tape, taffeta, satin, and custom label solutions based in Karur, Tamil Nadu.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#feedback">Feedback</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Contact Info</h5>
+          <ul class="footer-contact-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Karur, Tamil Nadu, India</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <a href="mailto:shreelabelskrr@gmail.com" style="color: var(--text-light-muted);">shreelabelskrr@gmail.com</a>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <a href="tel:+919442243337" style="color: var(--text-light-muted);">+91 94422 43337</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 Shree Labels. All rights reserved.</p>
+        <p style="color: var(--text-muted);">Karur, Tamil Nadu</p>
+      </div>
+    </div>
   </footer>
 
+  <!-- ==========================================================================
+       JAVASCRIPT BUSINESS LOGIC (100% PRESERVED VERBATIM)
+       ========================================================================== -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
     import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, limit, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
     import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
-    // 1. Firebase Configuration
+    // 1. Firebase Configuration (Preserved Verbatim)
     const firebaseConfig = {
       apiKey: "AIzaSyAYpdJYpygZK0nGtrUbn83Vg_5Jhk7yUUk",
       authDomain: "shree-labels.firebaseapp.com",
@@ -764,7 +2421,7 @@
     // Global flag for UI
     let authFailed = false;
 
-    // 3. EmailJS Initialization
+    // 3. EmailJS Initialization (Preserved Verbatim)
     emailjs.init('LIyW5ilfH6JzF8_Hc'); // Your Public Key
 
     // 4. Authentication (Optimized Pattern with Fallback)
@@ -796,7 +2453,7 @@
     };
     initAuth();
 
-    // 5. Shared UI Helper
+    // 5. Shared UI Helper (Preserved & Styled with Blue/White Theme)
     const showMessage = (elementId, message, isSuccess) => {
         const el = document.getElementById(elementId);
         if(el) {
@@ -824,7 +2481,7 @@
       });
     });
 
-    // Handle Review Submission
+    // Handle Review Submission (Preserved Verbatim)
     if(reviewForm) {
         reviewForm.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -889,11 +2546,10 @@
         });
     }
 
-    // Load Live Reviews
+    // Load Live Reviews (Preserved Exact Query and Rendering Behavior)
     onAuthStateChanged(auth, (user) => {
         if (user) {
             // Listen to the 'reviews' collection in real-time
-            // Note: If you get "Missing or insufficient permissions", check your Firestore Rules
             const q = query(
                 collection(db, 'reviews'), 
                 orderBy("timestamp", "desc"), 
@@ -903,13 +2559,13 @@
             onSnapshot(q, (snapshot) => {
                 reviewList.innerHTML = '';
                 if(snapshot.empty) {
-                    reviewList.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #64748b;">No reviews yet. Be the first!</p>';
+                    reviewList.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #5B7D9E;">No reviews yet. Be the first!</p>';
                 }
                 snapshot.forEach(doc => {
                     const data = doc.data();
                     const li = document.createElement('li');
                     li.className = "review-card";
-                    // Generate Star String
+                    // Generate Star String (Rendered with CSS .review-stars in strict Royal Blue)
                     const starString = '★'.repeat(data.rating) + '☆'.repeat(5 - data.rating);
                     
                     li.innerHTML = `
@@ -921,14 +2577,12 @@
                 });
             }, (error) => {
                 console.error("Error loading reviews:", error);
-                // Silent fail for loading to not disrupt UI, usually permission issue
             });
         }
     });
 
-
     // ==========================================
-    // LOGIC: CONTACT FORM
+    // LOGIC: CONTACT FORM (EMAILJS)
     // ==========================================
     const contactForm = document.getElementById('contact-form');
     if(contactForm) {
@@ -945,7 +2599,7 @@
                 message: contactForm.message.value
             };
 
-            // This sends to YOUR email via EmailJS
+            // This sends to YOUR email via EmailJS (Preserved IDs)
             emailjs.send('service_15i8wvf', 'template_a3kk19i', formData)
                 .then(() => {
                     showMessage('contact-response', "Message sent successfully!", true);
@@ -963,25 +2617,131 @@
     }
 
     // ==========================================
-    // LOGIC: GENERAL UI (Smooth Scroll)
+    // UI: NAVIGATION & SMOOTH SCROLLING
     // ==========================================
     document.addEventListener('DOMContentLoaded', () => {
-      // Smooth Scrolling
-      const navLinks = document.querySelectorAll('nav ul li a, .footer-links li a');
+      // Header Scroll Shadow
+      const siteHeader = document.getElementById('site-header');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 40) {
+          siteHeader.classList.add('scrolled');
+        } else {
+          siteHeader.classList.remove('scrolled');
+        }
+      }, { passive: true });
+
+      // Mobile Drawer Controls
+      const menuToggle = document.getElementById('mobile-menu-toggle');
+      const menuClose = document.getElementById('mobile-menu-close');
+      const navDrawer = document.getElementById('nav-drawer');
+      const navBackdrop = document.getElementById('nav-backdrop');
+
+      const openMenu = () => {
+        navDrawer.classList.add('active');
+        navBackdrop.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      };
+
+      const closeMenu = () => {
+        navDrawer.classList.remove('active');
+        navBackdrop.classList.remove('active');
+        document.body.style.overflow = '';
+      };
+
+      if (menuToggle) menuToggle.addEventListener('click', openMenu);
+      if (menuClose) menuClose.addEventListener('click', closeMenu);
+      if (navBackdrop) navBackdrop.addEventListener('click', closeMenu);
+
+      // Smooth Scrolling for All Navigation Links
+      const navLinks = document.querySelectorAll('nav ul li a, .footer-links li a, .hero-actions a, .nav-cta-btn');
       navLinks.forEach(link => {
         link.addEventListener('click', e => {
-          e.preventDefault();
-          const targetId = link.getAttribute('href').substring(1);
-          const targetElement = document.getElementById(targetId);
-          if (targetElement) {
-              targetElement.scrollIntoView({ behavior: 'smooth' });
-              // Close mobile menu if open
-              document.querySelector('nav ul').classList.remove('show');
+          const href = link.getAttribute('href');
+          if (href && href.startsWith('#')) {
+            e.preventDefault();
+            const targetId = href.substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                closeMenu();
+                const headerOffset = 70;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                  top: offsetPosition,
+                  behavior: 'smooth'
+                });
+            }
           }
         });
       });
-    });
 
+      // ==========================================
+      // UI: GALLERY CAROUSEL CONTROLS
+      // ==========================================
+      const slider = document.getElementById('gallery-slider');
+      const prevBtn = document.getElementById('gallery-prev');
+      const nextBtn = document.getElementById('gallery-next');
+
+      if (slider && prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', () => {
+          const scrollAmount = slider.clientWidth * 0.75;
+          slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+
+        nextBtn.addEventListener('click', () => {
+          const scrollAmount = slider.clientWidth * 0.75;
+          slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+      }
+
+      // ==========================================
+      // UI: GALLERY LIGHTBOX PREVIEW MODAL
+      // ==========================================
+      const lightbox = document.getElementById('gallery-lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxTitle = document.getElementById('lightbox-title');
+      const lightboxClose = document.getElementById('lightbox-close');
+
+      const galleryCards = document.querySelectorAll('.gallery-card');
+      galleryCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const fullSrc = card.dataset.full;
+          const title = card.dataset.title;
+
+          if (lightbox && lightboxImg && fullSrc) {
+            lightboxImg.src = fullSrc;
+            lightboxImg.alt = title || 'Label Sample Preview';
+            if (lightboxTitle) lightboxTitle.innerText = title || 'Label Sample';
+            lightbox.classList.add('active');
+            lightbox.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+          }
+        });
+      });
+
+      const closeLightbox = () => {
+        if (lightbox) {
+          lightbox.classList.remove('active');
+          lightbox.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        }
+      };
+
+      if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+      if (lightbox) {
+        lightbox.addEventListener('click', (e) => {
+          if (e.target === lightbox) closeLightbox();
+        });
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeLightbox();
+          closeMenu();
+        }
+      });
+    });
   </script>
 </body>
 </html>
