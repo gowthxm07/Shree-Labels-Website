@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shree Labels | Premium Printing & Label Solutions | Karur, Tamil Nadu</title>
+  <title>Shree Labels | Industrial Label Manufacturers & Printing Solutions | Karur, Tamil Nadu</title>
   
-  <!-- Modern Clean Typography: Manrope (Headings) and Inter (Body) -->
+  <!-- Modern Industrial Typography: Manrope (Headings/Data) and Inter (Body/Interface) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
   
   <!-- EmailJS Library (Preserved) -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
@@ -18,7 +18,7 @@
        DESIGN SYSTEM & COLOR TOKENS (STRICT BLUE & WHITE ONLY FOR UI)
        ========================================================================== */
     :root {
-      /* Deep Navy Blues */
+      /* Deep Industrial Navy Blues */
       --c-navy-darkest: #071426;
       --c-navy-dark: #0B1F3A;
       --c-navy-mid: #102B4E;
@@ -29,14 +29,15 @@
       --c-blue-royal: #1E6FB9;
       --c-blue-bright: #2F80ED;
 
-      /* Light & Soft Blues */
+      /* Light & Soft Technical Blues */
       --c-blue-ice: #F0F6FD;
       --c-blue-soft: #F6FAFE;
       --c-blue-tint: #EAF4FF;
 
-      /* Borders & Dividers */
+      /* Borders & Industrial Dividers */
       --c-border-subtle: #D8E8F8;
       --c-border-medium: #BDD8F4;
+      --c-border-dark: rgba(47, 128, 237, 0.22);
       
       /* Pure White */
       --c-white: #FFFFFF;
@@ -49,7 +50,7 @@
       --text-light: #FFFFFF;
       --text-light-muted: #D3E6FA;
 
-      /* Interactive Stars (Pure Blue System) */
+      /* Interactive Stars (Strict Pure Blue System) */
       --star-active: #1E6FB9;
       --star-hover: #2F80ED;
       --star-inactive: #BDD8F4;
@@ -58,17 +59,17 @@
       --shadow-sm: 0 2px 8px rgba(11, 31, 58, 0.05);
       --shadow-md: 0 8px 24px -4px rgba(11, 31, 58, 0.08);
       --shadow-lg: 0 16px 36px -6px rgba(11, 31, 58, 0.12);
-      --shadow-blue: 0 10px 30px rgba(30, 111, 185, 0.25);
+      --shadow-blue: 0 10px 30px rgba(30, 111, 185, 0.22);
       --shadow-dark: 0 12px 32px rgba(7, 20, 38, 0.4);
 
       /* Typography & Metrics */
       --font-heading: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
       --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      --radius-sm: 8px;
-      --radius-md: 14px;
-      --radius-lg: 20px;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
       --radius-full: 9999px;
-      --transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      --transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
     /* ==========================================================================
@@ -100,6 +101,7 @@
       color: var(--text-heading);
       font-weight: 700;
       line-height: 1.25;
+      letter-spacing: -0.02em;
     }
 
     a {
@@ -136,48 +138,49 @@
 
     .section-header {
       text-align: center;
-      max-width: 740px;
+      max-width: 760px;
       margin: 0 auto 3.5rem auto;
     }
 
-    .badge-pill {
+    .badge-tag {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.4rem 1.1rem;
+      padding: 0.35rem 1rem;
       background: var(--c-blue-tint);
       border: 1px solid var(--c-border-medium);
       color: var(--c-blue-deep);
-      border-radius: var(--radius-full);
-      font-size: 0.82rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
       font-weight: 700;
-      letter-spacing: 0.8px;
+      letter-spacing: 0.9px;
       text-transform: uppercase;
       margin-bottom: 1rem;
     }
 
     .section-title {
-      font-size: clamp(2rem, 3.4vw, 2.6rem);
+      font-size: clamp(2rem, 3.4vw, 2.7rem);
       margin-bottom: 1rem;
-      letter-spacing: -0.5px;
+      color: var(--text-heading);
+      font-weight: 800;
     }
 
     .section-subtitle {
-      font-size: 1.08rem;
+      font-size: 1.05rem;
       color: var(--text-secondary);
       line-height: 1.7;
     }
 
-    /* Primary & Secondary Buttons */
+    /* Buttons */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 0.6rem;
-      padding: 0.9rem 2rem;
+      padding: 0.85rem 1.8rem;
       font-weight: 600;
-      font-size: 1rem;
-      border-radius: var(--radius-full);
+      font-size: 0.95rem;
+      border-radius: var(--radius-sm);
       cursor: pointer;
       transition: var(--transition);
       text-align: center;
@@ -243,7 +246,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(7, 20, 38, 0.88);
+      background: rgba(7, 20, 38, 0.92);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(216, 232, 248, 0.12);
@@ -254,7 +257,7 @@
       padding: 0.85rem 5%;
       background: rgba(7, 20, 38, 0.98);
       box-shadow: 0 8px 24px rgba(7, 20, 38, 0.35);
-      border-bottom-color: rgba(47, 128, 237, 0.2);
+      border-bottom-color: rgba(47, 128, 237, 0.25);
     }
 
     .brand-logo {
@@ -268,6 +271,7 @@
       width: 32px;
       height: 32px;
       color: var(--c-blue-bright);
+      flex-shrink: 0;
     }
 
     .brand-text {
@@ -277,16 +281,16 @@
 
     .brand-title {
       font-family: var(--font-heading);
-      font-size: 1.25rem;
+      font-size: 1.22rem;
       font-weight: 800;
-      letter-spacing: 1.2px;
+      letter-spacing: 1.1px;
       color: var(--c-white);
       line-height: 1.1;
     }
 
     .brand-tag {
       font-size: 0.65rem;
-      letter-spacing: 1.5px;
+      letter-spacing: 1.6px;
       color: var(--text-light-muted);
       text-transform: uppercase;
       font-weight: 600;
@@ -295,20 +299,20 @@
     .nav-links-wrapper {
       display: flex;
       align-items: center;
-      gap: 2.2rem;
+      gap: 2rem;
     }
 
     nav ul {
       display: flex;
       list-style: none;
       align-items: center;
-      gap: 1.8rem;
+      gap: 1.6rem;
     }
 
     nav ul li a {
       color: var(--text-light-muted);
       font-weight: 500;
-      font-size: 0.93rem;
+      font-size: 0.92rem;
       letter-spacing: 0.3px;
       position: relative;
       padding: 0.4rem 0;
@@ -336,11 +340,10 @@
     }
 
     .nav-cta-btn {
-      padding: 0.6rem 1.4rem;
+      padding: 0.55rem 1.3rem;
       font-size: 0.88rem;
     }
 
-    /* Mobile Menu Toggle */
     .mobile-menu-btn {
       display: none;
       background: transparent;
@@ -363,7 +366,7 @@
     }
 
     /* ==========================================================================
-       2. HERO SECTION
+       2. HERO SECTION (INDUSTRIAL & IMAGE-FREE)
        ========================================================================== */
     .hero {
       position: relative;
@@ -385,8 +388,8 @@
       width: 100%;
       height: 100%;
       background-image: 
-        linear-gradient(rgba(47, 128, 237, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(47, 128, 237, 0.05) 1px, transparent 1px);
+        linear-gradient(rgba(47, 128, 237, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(47, 128, 237, 0.06) 1px, transparent 1px);
       background-size: 40px 40px;
       pointer-events: none;
       z-index: 1;
@@ -414,7 +417,7 @@
     }
 
     .hero-content {
-      max-width: 920px;
+      max-width: 960px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
@@ -426,14 +429,15 @@
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
-      padding: 0.45rem 1.2rem;
+      padding: 0.4rem 1.2rem;
       background: rgba(47, 128, 237, 0.12);
       border: 1px solid rgba(47, 128, 237, 0.35);
-      border-radius: var(--radius-full);
+      border-radius: var(--radius-sm);
       color: var(--c-blue-bright);
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
       margin-bottom: 1.8rem;
     }
 
@@ -443,13 +447,13 @@
     }
 
     .hero h1 {
-      font-size: clamp(2.5rem, 5.2vw, 4.2rem);
+      font-size: clamp(2.4rem, 5.2vw, 4.1rem);
       line-height: 1.18;
       color: var(--c-white);
       margin-bottom: 1.6rem;
       font-weight: 800;
       letter-spacing: -0.6px;
-      max-width: 880px;
+      max-width: 900px;
     }
 
     .hero h1 .highlight-blue {
@@ -461,7 +465,7 @@
       line-height: 1.8;
       color: var(--text-light-muted);
       margin-bottom: 2.8rem;
-      max-width: 760px;
+      max-width: 780px;
     }
 
     .hero-actions {
@@ -479,10 +483,10 @@
       justify-content: center;
       flex-wrap: wrap;
       gap: 2rem;
-      padding: 1.1rem 2.4rem;
-      background: rgba(14, 34, 61, 0.55);
-      border: 1px solid rgba(47, 128, 237, 0.22);
-      border-radius: var(--radius-full);
+      padding: 1rem 2.2rem;
+      background: rgba(14, 34, 61, 0.6);
+      border: 1px solid rgba(47, 128, 237, 0.25);
+      border-radius: var(--radius-sm);
       backdrop-filter: blur(10px);
       box-shadow: var(--shadow-sm);
     }
@@ -491,9 +495,10 @@
       display: flex;
       align-items: center;
       gap: 0.65rem;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       color: var(--text-light-muted);
-      font-weight: 500;
+      font-weight: 600;
+      letter-spacing: 0.3px;
     }
 
     .hero-spec-item svg {
@@ -504,7 +509,62 @@
     }
 
     /* ==========================================================================
-       3. ABOUT SECTION
+       3. INDUSTRIAL CAPABILITIES & QUALITY BAR
+       ========================================================================== */
+    .capabilities-bar {
+      background: var(--c-navy-dark);
+      border-top: 1px solid rgba(47, 128, 237, 0.2);
+      border-bottom: 1px solid rgba(47, 128, 237, 0.2);
+      padding: 2.5rem 0;
+      color: var(--c-white);
+    }
+
+    .capabilities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .capability-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.1rem;
+      padding: 0.5rem 0;
+    }
+
+    .capability-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      background: rgba(47, 128, 237, 0.15);
+      border: 1px solid rgba(47, 128, 237, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--c-blue-bright);
+    }
+
+    .capability-icon svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .capability-text h4 {
+      font-size: 1.05rem;
+      color: var(--c-white);
+      margin-bottom: 0.35rem;
+      font-weight: 700;
+    }
+
+    .capability-text p {
+      font-size: 0.86rem;
+      color: var(--text-light-muted);
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+       4. ABOUT SECTION
        ========================================================================== */
     .about {
       padding: 6.5rem 0;
@@ -524,7 +584,7 @@
     }
 
     .about-image-frame {
-      border-radius: var(--radius-lg);
+      border-radius: var(--radius-md);
       overflow: hidden;
       border: 1px solid var(--c-border-subtle);
       box-shadow: var(--shadow-md);
@@ -545,7 +605,7 @@
       background: var(--c-navy-dark);
       color: var(--c-white);
       padding: 1.4rem 1.6rem;
-      border-radius: var(--radius-md);
+      border-radius: var(--radius-sm);
       border: 1px solid var(--c-border-medium);
       box-shadow: var(--shadow-blue);
       max-width: 240px;
@@ -620,8 +680,8 @@
     }
 
     .about-feature-icon {
-      width: 28px;
-      height: 28px;
+      width: 32px;
+      height: 32px;
       border-radius: var(--radius-sm);
       background: var(--c-blue-tint);
       color: var(--c-blue-royal);
@@ -633,8 +693,8 @@
     }
 
     .about-feature-icon svg {
-      width: 16px;
-      height: 16px;
+      width: 18px;
+      height: 18px;
     }
 
     .about-feature-text h4 {
@@ -652,7 +712,283 @@
     }
 
     /* ==========================================================================
-       4. LABEL GALLERY SECTION
+       5. PRODUCT CATEGORIES SHOWCASE
+       ========================================================================== */
+    .products-section {
+      padding: 6.5rem 0;
+      background: var(--c-blue-soft);
+      border-top: 1px solid var(--c-border-subtle);
+      border-bottom: 1px solid var(--c-border-subtle);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .product-card {
+      background: var(--c-white);
+      border: 1px solid var(--c-border-subtle);
+      border-radius: var(--radius-md);
+      padding: 2.2rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--c-blue-royal);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .product-card-badge {
+      display: inline-flex;
+      align-self: flex-start;
+      padding: 0.3rem 0.8rem;
+      background: var(--c-blue-tint);
+      border: 1px solid var(--c-border-medium);
+      color: var(--c-blue-deep);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      border-radius: var(--radius-sm);
+      margin-bottom: 1.2rem;
+    }
+
+    .product-card h3 {
+      font-size: 1.4rem;
+      color: var(--text-heading);
+      margin-bottom: 0.8rem;
+    }
+
+    .product-card p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .product-specs-list {
+      list-style: none;
+      margin-bottom: 1.8rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--c-border-subtle);
+    }
+
+    .product-specs-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      color: var(--text-body);
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+    }
+
+    .product-specs-list li svg {
+      width: 16px;
+      height: 16px;
+      color: var(--c-blue-bright);
+      flex-shrink: 0;
+    }
+
+    .product-card .card-cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--c-blue-deep);
+      transition: var(--transition);
+    }
+
+    .product-card:hover .card-cta-link {
+      color: var(--c-blue-bright);
+      transform: translateX(4px);
+    }
+
+    @media (min-width: 1025px) {
+      .products-grid .product-card:nth-child(4) {
+        grid-column: span 1;
+      }
+      .products-grid .product-card:nth-child(5) {
+        grid-column: span 2;
+      }
+    }
+
+    /* ==========================================================================
+       6. SERVICES SECTION
+       ========================================================================== */
+    .services {
+      padding: 6.5rem 0;
+      background-color: var(--c-white);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: var(--c-white);
+      padding: 2.2rem 1.8rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--c-border-subtle);
+      transition: var(--transition);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--c-border-medium);
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--c-blue-deep), var(--c-blue-bright));
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .service-card:hover::before {
+      opacity: 1;
+    }
+
+    .service-icon-container {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 1.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--c-blue-tint);
+      border: 1px solid var(--c-border-medium);
+      border-radius: var(--radius-sm);
+      color: var(--c-blue-deep);
+      transition: var(--transition);
+    }
+
+    .service-card:hover .service-icon-container {
+      background: var(--c-blue-bright);
+      color: var(--c-white);
+      transform: scale(1.05);
+    }
+
+    .service-icon-svg {
+      width: 30px;
+      height: 30px;
+    }
+
+    .service-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.8rem;
+      color: var(--text-heading);
+    }
+
+    .service-card p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 0;
+    }
+
+    /* ==========================================================================
+       7. WHY CHOOSE SHREE LABELS (AUTHENTIC PILLARS)
+       ========================================================================== */
+    .why-us {
+      padding: 6.5rem 0;
+      background: var(--c-navy-darkest);
+      color: var(--c-white);
+      position: relative;
+    }
+
+    .why-us .section-title {
+      color: var(--c-white);
+    }
+
+    .why-us .section-subtitle {
+      color: var(--text-light-muted);
+    }
+
+    .why-us .badge-tag {
+      background: rgba(47, 128, 237, 0.15);
+      border-color: rgba(47, 128, 237, 0.35);
+      color: var(--c-blue-bright);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .why-card {
+      background: rgba(11, 31, 58, 0.7);
+      border: 1px solid rgba(47, 128, 237, 0.22);
+      border-radius: var(--radius-md);
+      padding: 2.2rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+    }
+
+    .why-card:hover {
+      background: rgba(16, 43, 78, 0.9);
+      border-color: var(--c-blue-bright);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 28px rgba(7, 20, 38, 0.6);
+    }
+
+    .why-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      background: rgba(47, 128, 237, 0.15);
+      border: 1px solid rgba(47, 128, 237, 0.3);
+      color: var(--c-blue-bright);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.4rem;
+    }
+
+    .why-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .why-card h4 {
+      font-size: 1.2rem;
+      color: var(--c-white);
+      margin-bottom: 0.8rem;
+      font-weight: 700;
+    }
+
+    .why-card p {
+      font-size: 0.9rem;
+      color: var(--text-light-muted);
+      line-height: 1.65;
+    }
+
+    /* ==========================================================================
+       8. LABEL GALLERY & CATALOGUE
        ========================================================================== */
     .gallery {
       padding: 6.5rem 0;
@@ -677,7 +1013,7 @@
     .gallery-nav-btn {
       width: 44px;
       height: 44px;
-      border-radius: var(--radius-full);
+      border-radius: var(--radius-sm);
       background: var(--c-white);
       border: 1px solid var(--c-border-medium);
       color: var(--c-blue-deep);
@@ -751,7 +1087,7 @@
 
     .gallery-card-thumb {
       position: relative;
-      height: 300px;
+      height: 290px;
       overflow: hidden;
       background: var(--c-white);
       display: flex;
@@ -764,12 +1100,28 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s ease;
+      transition: transform 0.4s ease;
       filter: none;
     }
 
     .gallery-card:hover .gallery-card-thumb img {
       transform: scale(1.05);
+    }
+
+    .gallery-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: rgba(7, 20, 38, 0.85);
+      backdrop-filter: blur(4px);
+      color: var(--c-white);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(47, 128, 237, 0.3);
     }
 
     .gallery-card-body {
@@ -792,7 +1144,7 @@
       line-height: 1.5;
     }
 
-    /* Lightbox Modal (Lightweight Vanilla JS & CSS) */
+    /* Lightbox Modal */
     .lightbox-modal {
       position: fixed;
       top: 0;
@@ -864,9 +1216,9 @@
     }
 
     .lightbox-close-btn {
-      width: 40px;
-      height: 40px;
-      border-radius: var(--radius-full);
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-sm);
       background: var(--c-blue-tint);
       color: var(--c-blue-deep);
       border: 1px solid var(--c-border-medium);
@@ -885,94 +1237,7 @@
     }
 
     /* ==========================================================================
-       5. SERVICES SECTION
-       ========================================================================== */
-    .services {
-      padding: 6.5rem 0;
-      background-color: var(--c-white);
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-    }
-
-    .service-card {
-      background: var(--c-white);
-      padding: 2.2rem 1.8rem;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--c-border-subtle);
-      transition: var(--transition);
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .service-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--c-border-medium);
-    }
-
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, var(--c-blue-deep), var(--c-blue-bright));
-      border-radius: var(--radius-md) var(--radius-md) 0 0;
-      opacity: 0;
-      transition: var(--transition);
-    }
-
-    .service-card:hover::before {
-      opacity: 1;
-    }
-
-    .service-icon-container {
-      width: 64px;
-      height: 64px;
-      margin-bottom: 1.6rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--c-blue-tint);
-      border: 1px solid var(--c-border-medium);
-      border-radius: var(--radius-sm);
-      color: var(--c-blue-deep);
-      transition: var(--transition);
-    }
-
-    .service-card:hover .service-icon-container {
-      background: var(--c-blue-bright);
-      color: var(--c-white);
-      transform: scale(1.05);
-    }
-
-    .service-icon-svg {
-      width: 32px;
-      height: 32px;
-    }
-
-    .service-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 0.8rem;
-      color: var(--text-heading);
-    }
-
-    .service-card p {
-      font-size: 0.93rem;
-      color: var(--text-secondary);
-      line-height: 1.65;
-      margin-bottom: 0;
-    }
-
-    /* ==========================================================================
-       6. CLIENT FEEDBACK SECTION (FIREBASE INTEGRATION)
+       9. CLIENT FEEDBACK SECTION (FIREBASE INTEGRATION)
        ========================================================================== */
     .feedback {
       padding: 6.5rem 0;
@@ -1052,13 +1317,12 @@
     .review-form-card {
       background: var(--c-white);
       padding: 2.5rem;
-      border-radius: var(--radius-lg);
+      border-radius: var(--radius-md);
       border: 1px solid var(--c-border-medium);
       box-shadow: var(--shadow-md);
-      position: static; /* Naturally stacks on mobile and tablet */
+      position: static;
     }
 
-    /* Sticky ONLY on Desktop (>1024px) */
     @media (min-width: 1025px) {
       .review-form-card {
         position: sticky;
@@ -1095,7 +1359,7 @@
 
     input, textarea {
       width: 100%;
-      padding: 0.9rem 1.1rem;
+      padding: 0.85rem 1.1rem;
       border: 1px solid var(--c-border-subtle);
       border-radius: var(--radius-sm);
       font-size: 0.95rem;
@@ -1190,7 +1454,7 @@
     }
 
     /* ==========================================================================
-       7. LOCATION SECTION (GOOGLE MAPS)
+       10. LOCATION SECTION (GOOGLE MAPS)
        ========================================================================== */
     .location-section {
       padding: 6.5rem 0 5rem 0;
@@ -1200,7 +1464,7 @@
     .location-card-container {
       background: var(--c-white);
       border: 1px solid var(--c-border-subtle);
-      border-radius: var(--radius-lg);
+      border-radius: var(--radius-md);
       overflow: hidden;
       box-shadow: var(--shadow-md);
       display: grid;
@@ -1267,7 +1531,7 @@
     }
 
     /* ==========================================================================
-       8. CONTACT SECTION (EMAILJS INTEGRATION)
+       11. CONTACT SECTION (CRITICAL EMAILJS SECTION)
        ========================================================================== */
     .contact {
       padding: 6.5rem 0;
@@ -1375,7 +1639,7 @@
     .contact-card-wrapper {
       background: var(--c-white);
       padding: 3rem;
-      border-radius: var(--radius-lg);
+      border-radius: var(--radius-md);
       border: 1px solid var(--c-border-medium);
       box-shadow: var(--shadow-dark);
     }
@@ -1444,25 +1708,25 @@
     }
 
     /* ==========================================================================
-       9. FOOTER
+       12. FOOTER
        ========================================================================== */
     footer {
       background: var(--c-navy-darkest);
       color: var(--text-light-muted);
-      padding: 4.5rem 0 2rem 0;
-      border-top: 1px solid rgba(216, 232, 248, 0.1);
+      padding: 5rem 0 2rem 0;
+      border-top: 1px solid rgba(47, 128, 237, 0.2);
     }
 
     .footer-top {
       display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr;
-      gap: 3.5rem;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 3rem;
       margin-bottom: 3.5rem;
     }
 
     .footer-brand h4 {
       color: var(--c-white);
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       font-weight: 800;
       letter-spacing: 1px;
       margin-bottom: 1rem;
@@ -1472,7 +1736,7 @@
       font-size: 0.92rem;
       line-height: 1.7;
       color: var(--text-light-muted);
-      max-width: 380px;
+      max-width: 320px;
     }
 
     .footer-col h5 {
@@ -1494,9 +1758,7 @@
       color: var(--text-light-muted);
       font-size: 0.9rem;
       transition: var(--transition);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
+      display: inline-block;
     }
 
     .footer-links li a:hover {
@@ -1545,8 +1807,17 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Mobile & Tablet Responsiveness */
+    /* Tablet & Medium Screens */
     @media (max-width: 1024px) {
+      .capabilities-grid, .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .products-grid .product-card:nth-child(5) {
+        grid-column: span 2;
+      }
       .services-grid {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -1573,6 +1844,7 @@
       }
     }
 
+    /* Mobile Screens */
     @media (max-width: 768px) {
       nav {
         padding: 0.9rem 1.5rem;
@@ -1626,7 +1898,7 @@
       nav ul {
         flex-direction: column;
         align-items: flex-start;
-        gap: 1.5rem;
+        gap: 1.4rem;
         width: 100%;
       }
 
@@ -1635,9 +1907,9 @@
       }
 
       nav ul li a {
-        font-size: 1.15rem;
+        font-size: 1.1rem;
         display: block;
-        padding: 0.5rem 0;
+        padding: 0.4rem 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.06);
       }
 
@@ -1663,7 +1935,7 @@
       }
 
       .hero-specs-strip {
-        border-radius: var(--radius-md);
+        border-radius: var(--radius-sm);
         padding: 1rem 1.4rem;
         gap: 1.2rem;
         width: 100%;
@@ -1678,6 +1950,17 @@
 
       .hero-actions .btn {
         width: 100%;
+      }
+
+      .capabilities-grid, .why-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+      .products-grid .product-card:nth-child(5) {
+        grid-column: span 1;
       }
 
       .gallery-card {
@@ -1732,7 +2015,7 @@
     <nav>
       <a href="#hero" class="brand-logo" aria-label="Shree Labels Home">
         <svg class="logo-icon-svg" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="4" y="4" width="24" height="24" rx="4" />
+          <rect x="4" y="4" width="24" height="24" rx="3" />
           <path d="M4 12h24" />
           <path d="M12 4v24" />
           <circle cx="20" cy="20" r="3" fill="currentColor" />
@@ -1749,16 +2032,18 @@
         <ul>
           <li><a href="#hero">Home</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#products">Products</a></li>
           <li><a href="#services">Services</a></li>
+          <li><a href="#why-us">Why Us</a></li>
+          <li><a href="#gallery">Gallery</a></li>
           <li><a href="#feedback">Feedback</a></li>
           <li><a href="#location">Location</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-        <a href="#contact" class="btn btn-primary nav-cta-btn">Contact Us</a>
+        <a href="#contact" class="btn btn-primary nav-cta-btn">Request a Quote</a>
       </div>
 
-      <!-- Hamburger Button -->
+      <!-- Mobile Hamburger Button -->
       <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -1771,7 +2056,7 @@
   </header>
 
   <!-- ==========================================================================
-       2. HERO SECTION
+       2. HERO SECTION (INDUSTRIAL & IMAGE-FREE)
        ========================================================================== -->
   <section id="hero" class="hero">
     <div class="hero-grid-bg"></div>
@@ -1782,22 +2067,22 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="20 6 9 17 4 12"></polyline>
           </svg>
-          <span>Where Precision Meets Sustainability</span>
+          <span>Industrial Label Solutions · Karur, Tamil Nadu</span>
         </div>
         
-        <h1>Precision Labels.<br><span class="highlight-blue">Made to Represent Your Brand.</span></h1>
+        <h1>Precision Labels.<br><span class="highlight-blue">Engineered to Represent Your Brand.</span></h1>
         
         <p class="hero-desc">
-          At Shree Labels, we deliver high-quality offset-printed labels that bring your brand to life. Based in Karur, Tamil Nadu, we specialize in cotton tape, taffeta, satin, and custom label solutions with precision printing and vibrant finishes.
+          Shree Labels delivers high-quality offset-printed labels, cotton tape, taffeta, satin, and custom label solutions. Based in Karur, Tamil Nadu, we combine precision printing, clean finishing, and reliable delivery for garment and textile manufacturers.
         </p>
 
         <div class="hero-actions">
-          <a href="#gallery" class="btn btn-primary">
-            <span>Explore Our Work</span>
+          <a href="#products" class="btn btn-primary">
+            <span>Explore Label Range</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
           </a>
           <a href="#contact" class="btn btn-outline-white">
-            <span>Get a Free Quote</span>
+            <span>Request a Quote</span>
           </a>
         </div>
 
@@ -1812,6 +2097,10 @@
           </div>
           <div class="hero-spec-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Custom Solutions</span>
+          </div>
+          <div class="hero-spec-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
             <span>Eco-Friendly Practices</span>
           </div>
         </div>
@@ -1820,7 +2109,66 @@
   </section>
 
   <!-- ==========================================================================
-       3. ABOUT SHREE LABELS
+       3. INDUSTRIAL CAPABILITIES & QUALITY BAR
+       ========================================================================== -->
+  <section class="capabilities-bar">
+    <div class="container">
+      <div class="capabilities-grid">
+        <div class="capability-item">
+          <div class="capability-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+            </svg>
+          </div>
+          <div class="capability-text">
+            <h4>Experienced Technicians</h4>
+            <p>Skilled operators dedicated to fulfilling precise customer specifications.</p>
+          </div>
+        </div>
+
+        <div class="capability-item">
+          <div class="capability-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          </div>
+          <div class="capability-text">
+            <h4>Quality Inspection</h4>
+            <p>Regular inspection checks to ensure clients receive reliable, clean products.</p>
+          </div>
+        </div>
+
+        <div class="capability-item">
+          <div class="capability-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </div>
+          <div class="capability-text">
+            <h4>Custom Solutions</h4>
+            <p>Tailored widths, substrates, folds, and cut finishes for individual brand needs.</p>
+          </div>
+        </div>
+
+        <div class="capability-item">
+          <div class="capability-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 14 14"></polyline>
+            </svg>
+          </div>
+          <div class="capability-text">
+            <h4>Timely Delivery</h4>
+            <p>Disciplined production scheduling meeting clients' supply turnarounds.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       4. ABOUT SHREE LABELS
        ========================================================================== -->
   <section id="about" class="about">
     <div class="container">
@@ -1831,12 +2179,12 @@
           </div>
           <div class="about-badge-card">
             <div class="num">Karur</div>
-            <div class="label">Tamil Nadu, India</div>
+            <div class="label">Tamil Nadu, India · Textile Hub</div>
           </div>
         </div>
 
         <div class="about-content">
-          <div class="badge-pill">About Us</div>
+          <div class="badge-tag">About Shree Labels</div>
           <h2>Where Precision Meets Sustainability</h2>
           
           <p class="about-lead">
@@ -1850,7 +2198,7 @@
           <div class="about-features-list">
             <div class="about-feature-item">
               <div class="about-feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
               </div>
               <div class="about-feature-text">
                 <h4>Precision Printing</h4>
@@ -1860,7 +2208,7 @@
 
             <div class="about-feature-item">
               <div class="about-feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
               </div>
               <div class="about-feature-text">
                 <h4>Quality Finishing</h4>
@@ -1870,7 +2218,7 @@
 
             <div class="about-feature-item">
               <div class="about-feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
               </div>
               <div class="about-feature-text">
                 <h4>Timely Delivery</h4>
@@ -1880,7 +2228,7 @@
 
             <div class="about-feature-item">
               <div class="about-feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
               </div>
               <div class="about-feature-text">
                 <h4>Custom Solutions</h4>
@@ -1894,117 +2242,153 @@
   </section>
 
   <!-- ==========================================================================
-       4. LABEL GALLERY
+       5. PRODUCT / LABEL SHOWCASE
        ========================================================================== -->
-  <section id="gallery" class="gallery">
+  <section id="products" class="products-section">
     <div class="container">
-      <div class="gallery-controls-bar">
-        <div>
-          <div class="badge-pill">Gallery</div>
-          <h2 class="section-title" style="text-align: left; margin-bottom: 0.4rem;">Our Label Work</h2>
-          <p class="section-subtitle" style="text-align: left; margin: 0;">Explore a selection of label solutions created with precision and attention to detail.</p>
-        </div>
-        
-        <div class="gallery-nav-buttons">
-          <button class="gallery-nav-btn" id="gallery-prev" aria-label="Previous Gallery Slide">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-          </button>
-          <button class="gallery-nav-btn" id="gallery-next" aria-label="Next Gallery Slide">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </button>
-        </div>
+      <div class="section-header">
+        <div class="badge-tag">Product Range</div>
+        <h2 class="section-title">Comprehensive Label Solutions</h2>
+        <p class="section-subtitle">Manufactured to exact brand specifications across diverse apparel substrates and finishes.</p>
       </div>
 
-      <!-- Preserved Gallery Images in Modern Carousel Cards (Natural Photo Colors) -->
-      <div class="gallery-slider" id="gallery-slider">
-        
-        <div class="gallery-card" data-full="gallery/label1.jpeg" data-title="Clothing Label Sample 1">
-          <div class="gallery-card-thumb">
-            <img src="gallery/label1.jpeg" alt="Clothing Label Sample 1" loading="lazy">
-          </div>
-          <div class="gallery-card-body">
-            <h4>Clothing Label Sample 1</h4>
-            <p>Printed label sample showcasing fine detail and quality finishing.</p>
-          </div>
+      <div class="products-grid">
+        <!-- Product 1: Cotton Tape Labels -->
+        <div class="product-card">
+          <span class="product-card-badge">Eco-Friendly & Natural</span>
+          <h3>Cotton Tape Labels</h3>
+          <p>Made from soft, natural cotton tape with high-precision printing. Ideal for sustainable fashion brands seeking a soft, skin-friendly texture and authentic aesthetic.</p>
+          <ul class="product-specs-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>100% natural cotton substrate</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Gentle on sensitive skin</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Vibrant wash-resistant inks</span>
+            </li>
+          </ul>
+          <a href="#contact" class="card-cta-link">
+            <span>Inquire About Cotton Tape</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
         </div>
 
-        <div class="gallery-card" data-full="gallery/label2.jpeg" data-title="Label Sample 2">
-          <div class="gallery-card-thumb">
-            <img src="gallery/label2.jpeg" alt="Label Sample 2" loading="lazy">
-          </div>
-          <div class="gallery-card-body">
-            <h4>Label Sample 2</h4>
-            <p>Custom printed label solution with crisp print resolution.</p>
-          </div>
+        <!-- Product 2: Taffeta Labels -->
+        <div class="product-card">
+          <span class="product-card-badge">Durable & Crisp</span>
+          <h3>Taffeta Labels</h3>
+          <p>Tightly woven taffeta labels engineered for exceptional crispness and durability. The industry standard for high-detail care instructions, barcode symbols, and sizing tags.</p>
+          <ul class="product-specs-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Razor-sharp small-text clarity</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Excellent wash and tear durability</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Clean cut and loop fold options</span>
+            </li>
+          </ul>
+          <a href="#contact" class="card-cta-link">
+            <span>Inquire About Taffeta</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
         </div>
 
-        <div class="gallery-card" data-full="gallery/label3.jpeg" data-title="Label Sample 3">
-          <div class="gallery-card-thumb">
-            <img src="gallery/label3.jpeg" alt="Label Sample 3" loading="lazy">
-          </div>
-          <div class="gallery-card-body">
-            <h4>Label Sample 3</h4>
-            <p>Durable printed label sample with clean typography.</p>
-          </div>
+        <!-- Product 3: Satin Labels -->
+        <div class="product-card">
+          <span class="product-card-badge">Silky Sheen & Comfort</span>
+          <h3>Satin Labels</h3>
+          <p>Silky-smooth satin with a lustrous sheen finish that provides luxurious comfort. Ideal for premium garments, intimate wear, nightwear, and designer collections.</p>
+          <ul class="product-specs-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Ultra-soft non-irritating finish</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Elegant glossy surface texture</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Center fold, end fold, or flat</span>
+            </li>
+          </ul>
+          <a href="#contact" class="card-cta-link">
+            <span>Inquire About Satin</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
         </div>
 
-        <div class="gallery-card" data-full="gallery/label4.jpeg" data-title="Label Sample 4">
-          <div class="gallery-card-thumb">
-            <img src="gallery/label4.jpeg" alt="Label Sample 4" loading="lazy">
-          </div>
-          <div class="gallery-card-body">
-            <h4>Label Sample 4</h4>
-            <p>Smooth finish label designed for apparel and packaging applications.</p>
-          </div>
+        <!-- Product 4: Custom Labels -->
+        <div class="product-card">
+          <span class="product-card-badge">Tailored Manufacturing</span>
+          <h3>Custom Labels</h3>
+          <p>Custom-built label solutions tailored to exact client dimensions, artwork, folding techniques, and substrates. Engineered to fit specialized apparel and textile requirements.</p>
+          <ul class="product-specs-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Bespoke sizes and configurations</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Tailored substrate selection</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Precision edge and fold execution</span>
+            </li>
+          </ul>
+          <a href="#contact" class="card-cta-link">
+            <span>Inquire About Custom Labels</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
         </div>
 
-        <div class="gallery-card" data-full="gallery/label5.jpeg" data-title="Label Sample 5">
-          <div class="gallery-card-thumb">
-            <img src="gallery/label5.jpeg" alt="Label Sample 5" loading="lazy">
-          </div>
-          <div class="gallery-card-body">
-            <h4>Label Sample 5</h4>
-            <p>Custom label with vibrant colors and precise dimensions.</p>
-          </div>
+        <!-- Product 5: Offset Printed Labels -->
+        <div class="product-card">
+          <span class="product-card-badge">High Volume & Sharp Definition</span>
+          <h3>Offset Printed Labels</h3>
+          <p>High-precision offset printed labels delivering superior color fidelity, smooth gradients, and microscopic typography. Perfect for bulk production orders requiring exact brand replication.</p>
+          <ul class="product-specs-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>High-volume industrial offset capacity</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Consistent color reproduction across batches</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Sharp micro-typography and fine linework</span>
+            </li>
+          </ul>
+          <a href="#contact" class="card-cta-link">
+            <span>Inquire About Offset Labels</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
         </div>
-
-        <div class="gallery-card" data-full="gallery/label6.jpeg" data-title="Label Sample 6">
-          <div class="gallery-card-thumb">
-            <img src="gallery/label6.jpeg" alt="Label Sample 6" loading="lazy">
-          </div>
-          <div class="gallery-card-body">
-            <h4>Label Sample 6</h4>
-            <p>Quality adhesive and label sample for industrial branding.</p>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
 
-  <!-- Lightbox Modal for Image Inspection (Lightweight Vanilla JS) -->
-  <div class="lightbox-modal" id="gallery-lightbox" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="lightbox-content">
-      <div class="lightbox-img-wrapper">
-        <img id="lightbox-img" src="" alt="Label Preview">
-      </div>
-      <div class="lightbox-footer">
-        <div class="lightbox-caption">
-          <h4 id="lightbox-title">Label Sample</h4>
-        </div>
-        <button class="lightbox-close-btn" id="lightbox-close" aria-label="Close Preview">✕</button>
-      </div>
-    </div>
-  </div>
-
   <!-- ==========================================================================
-       5. SERVICES / EXPERTISE
+       6. SERVICES / EXPERTISE
        ========================================================================== -->
   <section id="services" class="services">
     <div class="container">
       <div class="section-header">
-        <div class="badge-pill">Services</div>
-        <h2 class="section-title">Our Expertise</h2>
+        <div class="badge-tag">Services</div>
+        <h2 class="section-title">Core Printing & Finishing</h2>
         <p class="section-subtitle">Dedicated printing and custom finishing services for the apparel and packaging industry.</p>
       </div>
 
@@ -2063,12 +2447,179 @@
   </section>
 
   <!-- ==========================================================================
-       6. CLIENT FEEDBACK (CRITICAL FIREBASE SECTION)
+       7. WHY CHOOSE SHREE LABELS (AUTHENTIC PILLARS)
+       ========================================================================== -->
+  <section id="why-us" class="why-us">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge-tag">Why Choose Shree Labels</div>
+        <h2 class="section-title">Built on Quality, Speed & Reliability</h2>
+        <p class="section-subtitle">Our commitment to precision manufacturing makes us a dependable partner for textile and garment brands.</p>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+            </svg>
+          </div>
+          <h4>High Quality</h4>
+          <p>Durable materials, sharp micro-detailing, and consistent weave & print quality across every production run.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 14 14"></polyline>
+            </svg>
+          </div>
+          <h4>Timely Delivery</h4>
+          <p>Dependable production scheduling and prompt dispatch so your garment supply lines remain on track.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+          </div>
+          <h4>Custom Solutions</h4>
+          <p>Comprehensive options across cotton tape, taffeta, satin, and custom dimensions matching your design specifications.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <h4>Eco-Friendly Practices</h4>
+          <p>Sustainable cotton tape choices and environmentally responsible manufacturing processes based in Karur.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       8. LABEL GALLERY & CATALOGUE
+       ========================================================================== -->
+  <section id="gallery" class="gallery">
+    <div class="container">
+      <div class="gallery-controls-bar">
+        <div>
+          <div class="badge-tag">Gallery</div>
+          <h2 class="section-title" style="text-align: left; margin-bottom: 0.4rem;">Our Label Work</h2>
+          <p class="section-subtitle" style="text-align: left; margin: 0;">Explore a selection of label solutions created with precision and attention to detail.</p>
+        </div>
+        
+        <div class="gallery-nav-buttons">
+          <button class="gallery-nav-btn" id="gallery-prev" aria-label="Previous Gallery Slide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          </button>
+          <button class="gallery-nav-btn" id="gallery-next" aria-label="Next Gallery Slide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Preserved Gallery Images in Modern Carousel Cards (Natural Photo Colors) -->
+      <div class="gallery-slider" id="gallery-slider">
+        
+        <div class="gallery-card" data-full="gallery/label1.jpeg" data-title="Clothing Label Sample 1">
+          <div class="gallery-card-thumb">
+            <span class="gallery-badge">Garment Label</span>
+            <img src="gallery/label1.jpeg" alt="Clothing Label Sample 1" loading="lazy">
+          </div>
+          <div class="gallery-card-body">
+            <h4>Clothing Label Sample 1</h4>
+            <p>Printed label sample showcasing fine detail and quality finishing.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-full="gallery/label2.jpeg" data-title="Label Sample 2">
+          <div class="gallery-card-thumb">
+            <span class="gallery-badge">Custom Print</span>
+            <img src="gallery/label2.jpeg" alt="Label Sample 2" loading="lazy">
+          </div>
+          <div class="gallery-card-body">
+            <h4>Label Sample 2</h4>
+            <p>Custom printed label solution with crisp print resolution.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-full="gallery/label3.jpeg" data-title="Label Sample 3">
+          <div class="gallery-card-thumb">
+            <span class="gallery-badge">Apparel Tag</span>
+            <img src="gallery/label3.jpeg" alt="Label Sample 3" loading="lazy">
+          </div>
+          <div class="gallery-card-body">
+            <h4>Label Sample 3</h4>
+            <p>Durable printed label sample with clean typography.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-full="gallery/label4.jpeg" data-title="Label Sample 4">
+          <div class="gallery-card-thumb">
+            <span class="gallery-badge">Smooth Finish</span>
+            <img src="gallery/label4.jpeg" alt="Label Sample 4" loading="lazy">
+          </div>
+          <div class="gallery-card-body">
+            <h4>Label Sample 4</h4>
+            <p>Smooth finish label designed for apparel and packaging applications.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-full="gallery/label5.jpeg" data-title="Label Sample 5">
+          <div class="gallery-card-thumb">
+            <span class="gallery-badge">Vibrant Ink</span>
+            <img src="gallery/label5.jpeg" alt="Label Sample 5" loading="lazy">
+          </div>
+          <div class="gallery-card-body">
+            <h4>Label Sample 5</h4>
+            <p>Custom label with vibrant colors and precise dimensions.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-full="gallery/label6.jpeg" data-title="Label Sample 6">
+          <div class="gallery-card-thumb">
+            <span class="gallery-badge">Industrial Adhesive</span>
+            <img src="gallery/label6.jpeg" alt="Label Sample 6" loading="lazy">
+          </div>
+          <div class="gallery-card-body">
+            <h4>Label Sample 6</h4>
+            <p>Quality adhesive and label sample for industrial branding.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal for Image Inspection -->
+  <div class="lightbox-modal" id="gallery-lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="lightbox-content">
+      <div class="lightbox-img-wrapper">
+        <img id="lightbox-img" src="" alt="Label Preview">
+      </div>
+      <div class="lightbox-footer">
+        <div class="lightbox-caption">
+          <h4 id="lightbox-title">Label Sample</h4>
+        </div>
+        <button class="lightbox-close-btn" id="lightbox-close" aria-label="Close Preview">✕</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       9. CLIENT FEEDBACK (CRITICAL FIREBASE SECTION)
        ========================================================================== -->
   <section id="feedback" class="feedback">
     <div class="container">
       <div class="section-header">
-        <div class="badge-pill">Feedback</div>
+        <div class="badge-tag">Feedback</div>
         <h2 class="section-title">Client Feedback</h2>
         <p class="section-subtitle">Real experiences and feedback from our valued clients.</p>
       </div>
@@ -2144,12 +2695,12 @@
   </section>
 
   <!-- ==========================================================================
-       7. LOCATION SECTION (GOOGLE MAPS)
+       10. LOCATION SECTION (GOOGLE MAPS)
        ========================================================================== -->
   <section id="location" class="location-section">
     <div class="container">
       <div class="section-header">
-        <div class="badge-pill">Location</div>
+        <div class="badge-tag">Location</div>
         <h2 class="section-title">Visit Shree Labels</h2>
         <p class="section-subtitle">Located in Karur, Tamil Nadu</p>
       </div>
@@ -2198,7 +2749,7 @@
   </section>
 
   <!-- ==========================================================================
-       8. CONTACT SECTION (CRITICAL EMAILJS SECTION)
+       11. CONTACT SECTION (CRITICAL EMAILJS SECTION)
        ========================================================================== -->
   <section id="contact" class="contact">
     <div class="contact-grid-bg"></div>
@@ -2206,7 +2757,7 @@
       
       <!-- Contact Info Left Column -->
       <div class="contact-info-col">
-        <div class="badge-pill" style="background: rgba(47, 128, 237, 0.15); border-color: rgba(47, 128, 237, 0.35); color: var(--c-blue-bright);">Contact</div>
+        <div class="badge-tag" style="background: rgba(47, 128, 237, 0.15); border-color: rgba(47, 128, 237, 0.35); color: var(--c-blue-bright);">Contact</div>
         <h2>Get in Touch</h2>
         <p class="lead-text">
           Ready to start your project? Contact us today for a free quote.
@@ -2286,7 +2837,7 @@
   </section>
 
   <!-- ==========================================================================
-       9. FOOTER
+       12. FOOTER
        ========================================================================== -->
   <footer>
     <div class="container">
@@ -2299,12 +2850,25 @@
         </div>
 
         <div class="footer-col">
+          <h5>Product Range</h5>
+          <ul class="footer-links">
+            <li><a href="#products">Cotton Tape Labels</a></li>
+            <li><a href="#products">Taffeta Labels</a></li>
+            <li><a href="#products">Satin Labels</a></li>
+            <li><a href="#products">Custom Labels</a></li>
+            <li><a href="#products">Offset Printed Labels</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
           <h5>Quick Links</h5>
           <ul class="footer-links">
             <li><a href="#hero">Home</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#products">Products</a></li>
             <li><a href="#services">Services</a></li>
+            <li><a href="#why-us">Why Us</a></li>
+            <li><a href="#gallery">Gallery</a></li>
             <li><a href="#feedback">Feedback</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
@@ -2401,7 +2965,6 @@
         if(el) {
             el.innerText = message;
             el.className = 'feedback-response ' + (isSuccess ? 'text-success' : 'text-error');
-            // Remove timeout for errors so user can read them
             if(isSuccess) setTimeout(() => { el.innerText = ''; }, 5000);
         }
     };
@@ -2440,7 +3003,6 @@
                 return;
             }
 
-            // Disable button
             btn.disabled = true;
             btn.innerText = "Sending...";
 
@@ -2449,7 +3011,6 @@
             const feedback = document.getElementById('review-text').value;
 
             try {
-                // Save to Firebase (Simpler path since it's your own project)
                 if (auth.currentUser) {
                     await addDoc(collection(db, 'reviews'), {
                         name: name,
@@ -2462,7 +3023,6 @@
                     throw new Error("Authentication not ready. Please try again or check console.");
                 }
 
-                // Success State
                 showMessage('review-response', "Thank you! Your feedback has been saved.", true);
                 reviewForm.reset();
                 stars.forEach(s => s.classList.remove('selected'));
@@ -2470,8 +3030,6 @@
 
             } catch (error) {
                 console.error("Submission Error:", error);
-                
-                // Show ACTUAL error to user for debugging
                 let errorMsg = "Error saving feedback: " + (error.message || "Unknown error");
                 
                 if (error.code === 'permission-denied') {
@@ -2491,7 +3049,6 @@
     // Load Live Reviews (Preserved Exact Query and Rendering Behavior)
     onAuthStateChanged(auth, (user) => {
         if (user) {
-            // Listen to the 'reviews' collection in real-time
             const q = query(
                 collection(db, 'reviews'), 
                 orderBy("timestamp", "desc"), 
@@ -2507,7 +3064,6 @@
                     const data = doc.data();
                     const li = document.createElement('li');
                     li.className = "review-card";
-                    // Generate Star String (Rendered with CSS .review-stars in strict Royal Blue)
                     const starString = '★'.repeat(data.rating) + '☆'.repeat(5 - data.rating);
                     
                     li.innerHTML = `
@@ -2541,7 +3097,6 @@
                 message: contactForm.message.value
             };
 
-            // This sends to YOUR email via EmailJS (Preserved IDs)
             emailjs.send('service_15i8wvf', 'template_a3kk19i', formData)
                 .then(() => {
                     showMessage('contact-response', "Message sent successfully!", true);
@@ -2595,7 +3150,7 @@
       if (navBackdrop) navBackdrop.addEventListener('click', closeMenu);
 
       // Smooth Scrolling for All Navigation Links
-      const navLinks = document.querySelectorAll('nav ul li a, .footer-links li a, .hero-actions a, .nav-cta-btn');
+      const navLinks = document.querySelectorAll('nav ul li a, .footer-links li a, .hero-actions a, .nav-cta-btn, .card-cta-link');
       navLinks.forEach(link => {
         link.addEventListener('click', e => {
           const href = link.getAttribute('href');
