@@ -52,7 +52,7 @@ This application serves as a digital portfolio showcasing infrastructure, label 
 | Authentication | Firebase Auth (Anonymous Sign-in) |
 | Email Service | EmailJS |
 | Hosting | Vercel |
-| Fonts | Google Fonts (Outfit & Playfair Display) |
+| Fonts | Google Fonts (Manrope & Inter) |
 
 ---
 
