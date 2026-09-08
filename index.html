@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shree Labels | Industrial Label Manufacturers & Printing Solutions | Karur, Tamil Nadu</title>
+  <title>Shree Labels | Quality Label Printing & Certified Solutions | Karur, Tamil Nadu</title>
+  <meta name="description" content="Shree Labels is an established label manufacturer in Karur, Tamil Nadu offering OEKO-TEX® STANDARD 100 certified labels, organic cotton tape, taffeta, satin, and custom offset printing solutions.">
+  <meta name="keywords" content="Shree Labels, label printing Karur, OEKO-TEX Standard 100, cotton tape labels, taffeta labels, satin labels, offset printed labels, Tamil Nadu garment labels">
   
   <!-- Modern Industrial Typography: Manrope (Headings/Data) and Inter (Body/Interface) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1004,6 +1006,128 @@
     }
 
     /* ==========================================================================
+       7B. CERTIFICATIONS & STANDARDS SECTION (AUTHENTIC VERIFIED COMPLIANCE)
+       ========================================================================== */
+    .certifications {
+      padding: 6.5rem 0;
+      background-color: var(--c-white);
+      border-top: 1px solid var(--c-border-subtle);
+      position: relative;
+    }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .cert-card {
+      background: var(--c-white);
+      border: 1px solid var(--c-border-medium);
+      border-radius: var(--radius-lg);
+      padding: 2.4rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cert-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--c-blue-deep), var(--c-blue-bright));
+      opacity: 0.9;
+    }
+
+    .cert-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--c-blue-bright);
+    }
+
+    .cert-media-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--c-blue-soft);
+      border: 1px solid var(--c-border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin-bottom: 1.8rem;
+      height: 190px;
+      position: relative;
+    }
+
+    .cert-logo-img {
+      max-height: 150px;
+      max-width: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: none !important;
+    }
+
+    .cert-content {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .cert-badge {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.75rem;
+      background: var(--c-blue-tint);
+      color: var(--c-blue-brand);
+      border: 1px solid var(--c-border-medium);
+      border-radius: var(--radius-full);
+      margin-bottom: 0.9rem;
+    }
+
+    .cert-title {
+      font-size: 1.32rem;
+      color: var(--text-heading);
+      margin-bottom: 0.85rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .cert-desc {
+      font-size: 0.94rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+
+    .cert-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--c-border-subtle);
+      font-size: 0.86rem;
+      color: var(--text-body);
+    }
+
+    .cert-meta-item strong {
+      color: var(--c-navy-dark);
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
        8. LABEL GALLERY & CATALOGUE
        ========================================================================== */
     .gallery {
@@ -1852,6 +1976,13 @@
         gap: 1.5rem;
       }
 
+      .cert-grid {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+        max-width: 620px;
+        margin: 0 auto;
+      }
+
       .gallery-card {
         flex: 0 0 calc(50% - 1rem);
         min-width: 290px;
@@ -1914,6 +2045,7 @@
       .products-section, 
       .services-section, 
       .why-us, 
+      .certifications,
       .gallery, 
       .feedback, 
       .location-section, 
@@ -2287,6 +2419,20 @@
         padding: 1.75rem 1.4rem;
       }
 
+      .cert-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .cert-card {
+        padding: 1.75rem 1.4rem;
+      }
+
+      .cert-media-wrap {
+        height: 170px;
+        padding: 1.2rem;
+      }
+
       /* Gallery Carousel (Touch-friendly & Min 44px Nav Buttons) */
       .gallery-controls-bar {
         flex-direction: row;
@@ -2515,6 +2661,7 @@
       .products-section, 
       .services-section, 
       .why-us, 
+      .certifications,
       .gallery, 
       .feedback, 
       .location-section, 
@@ -2543,6 +2690,23 @@
 
       .product-card-thumb {
         height: 180px;
+      }
+
+      .cert-card {
+        padding: 1.4rem;
+      }
+
+      .cert-media-wrap {
+        height: 150px;
+        padding: 1rem;
+      }
+
+      .cert-title {
+        font-size: 1.15rem;
+      }
+
+      .cert-desc {
+        font-size: 0.88rem;
       }
     }
 
@@ -2604,6 +2768,7 @@
           <li><a href="#products">Products</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#why-us">Why Us</a></li>
+          <li><a href="#certifications">Certifications</a></li>
           <li><a href="#gallery">Gallery</a></li>
           <li><a href="#feedback">Feedback</a></li>
           <li><a href="#location">Location</a></li>
@@ -3073,6 +3238,71 @@
   </section>
 
   <!-- ==========================================================================
+       7B. CERTIFICATIONS & STANDARDS SECTION (AUTHENTIC VERIFIED COMPLIANCE)
+       ========================================================================== -->
+  <section id="certifications" class="certifications">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge-tag">Verified Compliance & Quality</div>
+        <h2 class="section-title">Certifications & Standards</h2>
+        <p class="section-subtitle">Our commitment to verified product safety, material purity, and recognized textile manufacturing standards.</p>
+      </div>
+
+      <div class="cert-grid">
+        <!-- Certification Card 1: OEKO-TEX STANDARD 100 -->
+        <div class="cert-card">
+          <div class="cert-media-wrap">
+            <img src="gallery/cert-oekotex.png" alt="OEKO-TEX STANDARD 100 Official Certification Mark" class="cert-logo-img">
+          </div>
+          <div class="cert-content">
+            <span class="cert-badge">International Standard</span>
+            <h3 class="cert-title">OEKO-TEX® STANDARD 100</h3>
+            <p class="cert-desc">
+              Verified product safety certification confirming that label materials are tested for harmful substances. Certificate available for Satin, Taffeta, and Twill Tape labels manufactured to stringent international safety requirements.
+            </p>
+            <div class="cert-meta">
+              <span class="cert-meta-item">
+                <strong>Certificate:</strong> 19.HIN.97140 Hohenstein HTTI
+              </span>
+              <span class="cert-meta-item">
+                <strong>Material Scope:</strong> Satin, Taffeta, Twill Tape
+              </span>
+              <span class="cert-meta-item">
+                <strong>Testing Focus:</strong> Tested for harmful substances
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Certification Card 2: 100% Organic Cotton (Organic Cotton Mart) -->
+        <div class="cert-card">
+          <div class="cert-media-wrap">
+            <img src="gallery/cert-organic-cotton.png" alt="100% Organic Cotton Official Mark" class="cert-logo-img">
+          </div>
+          <div class="cert-content">
+            <span class="cert-badge">Material Standard</span>
+            <h3 class="cert-title">100% Organic Cotton (Organic Cotton Mart)</h3>
+            <p class="cert-desc">
+              Verified organic cotton material standard utilized for specialized eco-conscious cotton tape labels. Woven with pure natural organic fibers for comfortable skin contact, durability, and sustainable garment branding.
+            </p>
+            <div class="cert-meta">
+              <span class="cert-meta-item">
+                <strong>Specification:</strong> 100% Organic Cotton
+              </span>
+              <span class="cert-meta-item">
+                <strong>Origin:</strong> Crafted in Karur, India
+              </span>
+              <span class="cert-meta-item">
+                <strong>Application:</strong> Skin-friendly garment labels & tape
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
        8. LABEL GALLERY & CATALOGUE
        ========================================================================== -->
   <section id="gallery" class="gallery">
@@ -3327,9 +3557,9 @@
       <!-- Contact Info Left Column -->
       <div class="contact-info-col">
         <div class="badge-tag" style="background: rgba(47, 128, 237, 0.15); border-color: rgba(47, 128, 237, 0.35); color: var(--c-blue-bright);">Contact</div>
-        <h2>Get in Touch</h2>
+        <h2>Request a Quote & Contact</h2>
         <p class="lead-text">
-          Ready to start your project? Contact us today for a free quote.
+          Ready to start your custom label order or request product pricing? Reach out today for a prompt quotation and technical consultation.
         </p>
 
         <div class="contact-channels">
@@ -3368,8 +3598,8 @@
       <!-- Contact Form Right Column (Card) -->
       <div class="contact-card-wrapper">
         <div class="contact-card-header">
-          <h3>Send a Message</h3>
-          <p>Fill out the form below and we will get back to you promptly.</p>
+          <h3>Request a Quote / Send an Inquiry</h3>
+          <p>Submit your label requirements and our team will respond promptly with pricing and lead times.</p>
         </div>
 
         <!-- PRESERVED ID: contact-form -->
@@ -3387,9 +3617,9 @@
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="contact-message">Message</label>
+            <label class="form-label" for="contact-message">Message / Specifications</label>
             <!-- PRESERVED NAME: message -->
-            <textarea id="contact-message" name="message" rows="5" placeholder="How can we help you?" required></textarea>
+            <textarea id="contact-message" name="message" rows="5" placeholder="Tell us about your label requirements (substrate, dimensions, estimated quantity, etc.)..." required></textarea>
           </div>
 
           <!-- PRESERVED ID: contact-submit-btn -->
@@ -3437,6 +3667,7 @@
             <li><a href="#products">Products</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#why-us">Why Us</a></li>
+            <li><a href="#certifications">Certifications</a></li>
             <li><a href="#gallery">Gallery</a></li>
             <li><a href="#feedback">Feedback</a></li>
             <li><a href="#contact">Contact</a></li>
