@@ -1006,6 +1006,132 @@
     }
 
     /* ==========================================================================
+       7A. SUSTAINABILITY & RESPONSIBLE PRACTICES SECTION
+       ========================================================================== */
+    .sustainability {
+      padding: 6.5rem 0;
+      background-color: var(--c-blue-soft);
+      border-top: 1px solid var(--c-border-subtle);
+      position: relative;
+    }
+
+    .sustainability-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .sustainability-card {
+      background: var(--c-white);
+      border: 1px solid var(--c-border-medium);
+      border-radius: var(--radius-lg);
+      padding: 2.2rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sustainability-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--c-blue-deep), var(--c-blue-bright));
+      opacity: 0.85;
+      transition: var(--transition);
+    }
+
+    .sustainability-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--c-blue-bright);
+    }
+
+    .sustainability-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      background: var(--c-blue-tint);
+      border: 1px solid var(--c-border-medium);
+      color: var(--c-blue-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.4rem;
+      transition: var(--transition);
+    }
+
+    .sustainability-card:hover .sustainability-icon {
+      background: var(--c-blue-brand);
+      color: var(--c-white);
+      border-color: var(--c-blue-brand);
+    }
+
+    .sustainability-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .sustainability-card h3 {
+      font-size: 1.18rem;
+      color: var(--text-heading);
+      margin-bottom: 0.8rem;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .sustainability-card p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    .sustainability-statement {
+      background: var(--c-white);
+      border: 1px solid var(--c-border-medium);
+      border-left: 4px solid var(--c-blue-royal);
+      border-radius: var(--radius-md);
+      padding: 1.6rem 2.2rem;
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sustainability-statement .statement-icon {
+      flex-shrink: 0;
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-full);
+      background: var(--c-blue-tint);
+      color: var(--c-blue-royal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sustainability-statement .statement-icon svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .sustainability-statement .statement-text {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--c-navy-dark);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ==========================================================================
        7B. CERTIFICATIONS & STANDARDS SECTION (AUTHENTIC VERIFIED COMPLIANCE)
        ========================================================================== */
     .certifications {
@@ -2045,12 +2171,18 @@
       .products-section, 
       .services-section, 
       .why-us, 
+      .sustainability,
       .certifications,
       .gallery, 
       .feedback, 
       .location-section, 
       .contact {
         padding: 4.5rem 0;
+      }
+
+      .sustainability-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
       }
 
       /* Navigation Header & Stacking Context (Fixes Backdrop Blocking Drawer) */
@@ -2419,6 +2551,25 @@
         padding: 1.75rem 1.4rem;
       }
 
+      .sustainability-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        margin-bottom: 2rem;
+      }
+
+      .sustainability-card {
+        padding: 1.75rem 1.4rem;
+      }
+
+      .sustainability-statement {
+        padding: 1.25rem 1.4rem;
+        gap: 1rem;
+      }
+
+      .sustainability-statement .statement-text {
+        font-size: 0.95rem;
+      }
+
       .cert-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -2661,12 +2812,31 @@
       .products-section, 
       .services-section, 
       .why-us, 
+      .sustainability,
       .certifications,
       .gallery, 
       .feedback, 
       .location-section, 
       .contact {
         padding: 3.5rem 0;
+      }
+
+      .sustainability-card {
+        padding: 1.4rem;
+      }
+
+      .sustainability-card h3 {
+        font-size: 1.1rem;
+      }
+
+      .sustainability-card p {
+        font-size: 0.88rem;
+      }
+
+      .sustainability-statement {
+        padding: 1.15rem 1.2rem;
+        flex-direction: column;
+        text-align: center;
       }
 
       .about-badge-card {
@@ -2768,6 +2938,7 @@
           <li><a href="#products">Products</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#why-us">Why Us</a></li>
+          <li><a href="#sustainability">Sustainability</a></li>
           <li><a href="#certifications">Certifications</a></li>
           <li><a href="#gallery">Gallery</a></li>
           <li><a href="#feedback">Feedback</a></li>
@@ -3238,6 +3409,84 @@
   </section>
 
   <!-- ==========================================================================
+       7A. SUSTAINABILITY & RESPONSIBLE PRACTICES SECTION
+       ========================================================================== -->
+  <section id="sustainability" class="sustainability">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge-tag">Responsible Production</div>
+        <h2 class="section-title">Sustainability & Conscious Manufacturing</h2>
+        <p class="section-subtitle">Delivering high-performance labeling solutions while prioritizing natural materials, efficient production, and enduring quality.</p>
+      </div>
+
+      <div class="sustainability-grid">
+        <!-- Pillar 1: Organic Cotton Options -->
+        <div class="sustainability-card">
+          <div class="sustainability-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22v-9"></path>
+              <path d="M12 13a5 5 0 0 0 5-5c0-4-5-6-5-6s-5 2-5 6a5 5 0 0 0 5 5z"></path>
+            </svg>
+          </div>
+          <h3>Organic Cotton Options</h3>
+          <p>Dedicated organic cotton tape varieties crafted for apparel brands seeking gentle, skin-friendly, and natural labeling alternatives.</p>
+        </div>
+
+        <!-- Pillar 2: Natural Material Choices -->
+        <div class="sustainability-card">
+          <div class="sustainability-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9"></circle>
+              <path d="M12 3v18"></path>
+              <path d="M3 12h18"></path>
+              <path d="M12 8a7 7 0 0 1 5 5"></path>
+            </svg>
+          </div>
+          <h3>Natural Material Choices</h3>
+          <p>Carefully sourced natural yarns and pure fiber options designed to complement organic garment collections and reduce reliance on synthetics where appropriate.</p>
+        </div>
+
+        <!-- Pillar 3: Responsible Manufacturing Approach -->
+        <div class="sustainability-card">
+          <div class="sustainability-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+            </svg>
+          </div>
+          <h3>Responsible Manufacturing Approach</h3>
+          <p>Structured cutting and printing workflows engineered to maximize material efficiency, minimize production waste, and ensure responsible operations in Karur.</p>
+        </div>
+
+        <!-- Pillar 4: Built for Long-Term Use -->
+        <div class="sustainability-card">
+          <div class="sustainability-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              <polyline points="9 12 11 14 15 10"></polyline>
+            </svg>
+          </div>
+          <h3>Built for Long-Term Use</h3>
+          <p>Superior color-fastness, resilient edge finishing, and high wash-durability ensure our labels remain intact and legible throughout the garment’s entire lifecycle.</p>
+        </div>
+      </div>
+
+      <!-- Concluding Statement Banner -->
+      <div class="sustainability-statement">
+        <div class="statement-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+        </div>
+        <p class="statement-text">
+          We continue to focus on material choices and production practices that support responsible textile and garment labeling.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
        7B. CERTIFICATIONS & STANDARDS SECTION (AUTHENTIC VERIFIED COMPLIANCE)
        ========================================================================== -->
   <section id="certifications" class="certifications">
@@ -3274,26 +3523,26 @@
           </div>
         </div>
 
-        <!-- Certification Card 2: 100% Organic Cotton (Organic Cotton Mart) -->
+        <!-- Certification Card 2: Sedex (Supplier Ethical Data Exchange) -->
         <div class="cert-card">
           <div class="cert-media-wrap">
-            <img src="gallery/cert-organic-cotton.png" alt="100% Organic Cotton Official Mark" class="cert-logo-img">
+            <img src="gallery/cert-sedex.png" alt="Sedex Official Certification Mark" class="cert-logo-img">
           </div>
           <div class="cert-content">
-            <span class="cert-badge">Material Standard</span>
-            <h3 class="cert-title">100% Organic Cotton (Organic Cotton Mart)</h3>
+            <span class="cert-badge">Ethical & Social Compliance</span>
+            <h3 class="cert-title">Sedex (Supplier Ethical Data Exchange)</h3>
             <p class="cert-desc">
-              Verified organic cotton material standard utilized for specialized eco-conscious cotton tape labels. Woven with pure natural organic fibers for comfortable skin contact, durability, and sustainable garment branding.
+              Shree Labels aligns manufacturing operations with Sedex principles for supply chain transparency, responsible working conditions, and ethical production standards.
             </p>
             <div class="cert-meta">
               <span class="cert-meta-item">
-                <strong>Specification:</strong> 100% Organic Cotton
+                <strong>Focus Area:</strong> Supply Chain Transparency & Worker Welfare
               </span>
               <span class="cert-meta-item">
-                <strong>Origin:</strong> Crafted in Karur, India
+                <strong>Manufacturing Base:</strong> Karur, Tamil Nadu, India
               </span>
               <span class="cert-meta-item">
-                <strong>Application:</strong> Skin-friendly garment labels & tape
+                <strong>Standards:</strong> Ethical & Responsible Manufacturing
               </span>
             </div>
           </div>
@@ -3667,6 +3916,7 @@
             <li><a href="#products">Products</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#why-us">Why Us</a></li>
+            <li><a href="#sustainability">Sustainability</a></li>
             <li><a href="#certifications">Certifications</a></li>
             <li><a href="#gallery">Gallery</a></li>
             <li><a href="#feedback">Feedback</a></li>
