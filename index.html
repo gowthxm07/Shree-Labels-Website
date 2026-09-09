@@ -2219,47 +2219,111 @@
     }
 
     /* ==========================================================================
-       SCROLL-REVEAL ANIMATION SYSTEM (LIGHTWEIGHT & FAIL-SAFE)
+       SCROLL-REVEAL ANIMATION SYSTEM (DYNAMIC POP & DIRECTIONAL REVEALS)
        ========================================================================== */
+    /* Transitions by Animation Type */
+    html.reveal-ready .reveal-up,
     html.reveal-ready .reveal {
       transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    html.reveal-ready .reveal-scale {
-      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    html.reveal-ready .reveal-pop {
+      transition: opacity 0.60s cubic-bezier(0.16, 1, 0.3, 1), transform 0.60s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* Unrevealed Initial States */
+    html.reveal-ready .reveal-left,
+    html.reveal-ready .reveal-right {
+      transition: opacity 0.70s cubic-bezier(0.16, 1, 0.3, 1), transform 0.70s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html.reveal-ready .reveal-scale {
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Unrevealed Initial States (Opacity + Physical Movement + Subtle Scaling) */
+    html.reveal-ready .reveal-up:not(.is-visible),
     html.reveal-ready .reveal:not(.is-visible) {
       opacity: 0;
-      transform: translateY(22px);
+      transform: translateY(45px) scale(0.96);
+      will-change: opacity, transform;
+    }
+
+    html.reveal-ready .reveal-pop:not(.is-visible) {
+      opacity: 0;
+      transform: translateY(35px) scale(0.90);
+      will-change: opacity, transform;
+    }
+
+    html.reveal-ready .reveal-left:not(.is-visible) {
+      opacity: 0;
+      transform: translateX(-55px) scale(0.96);
+      will-change: opacity, transform;
+    }
+
+    html.reveal-ready .reveal-right:not(.is-visible) {
+      opacity: 0;
+      transform: translateX(55px) scale(0.96);
       will-change: opacity, transform;
     }
 
     html.reveal-ready .reveal-scale:not(.is-visible) {
       opacity: 0;
-      transform: scale(0.97);
+      transform: translateY(30px) scale(0.94);
       will-change: opacity, transform;
     }
 
-    /* Revealed States - clean restoration to default */
+    /* Responsive Directional Adjustment for Single-Column Viewports (< 768px) */
+    @media (max-width: 767px) {
+      html.reveal-ready .reveal-left:not(.is-visible) {
+        transform: translateY(35px) translateX(-25px) scale(0.96);
+      }
+      html.reveal-ready .reveal-right:not(.is-visible) {
+        transform: translateY(35px) translateX(25px) scale(0.96);
+      }
+    }
+
+    /* Revealed States - Clean restoration to natural resting state */
+    html.reveal-ready .reveal-up.is-visible,
     html.reveal-ready .reveal.is-visible,
+    html.reveal-ready .reveal-pop.is-visible,
+    html.reveal-ready .reveal-left.is-visible,
+    html.reveal-ready .reveal-right.is-visible,
     html.reveal-ready .reveal-scale.is-visible {
       opacity: 1;
       will-change: auto;
     }
 
-    /* Subtle Progressive Stagger Delays (80ms - 100ms intervals) */
-    html.reveal-ready .reveal-delay-1 { transition-delay: 0.08s; }
-    html.reveal-ready .reveal-delay-2 { transition-delay: 0.16s; }
-    html.reveal-ready .reveal-delay-3 { transition-delay: 0.24s; }
-    html.reveal-ready .reveal-delay-4 { transition-delay: 0.32s; }
-    html.reveal-ready .reveal-delay-5 { transition-delay: 0.40s; }
-    html.reveal-ready .reveal-delay-6 { transition-delay: 0.48s; }
+    /* Card Hover Preservation - Ensures instant, clean hover after reveal */
+    html.reveal-ready .product-card.is-visible:hover,
+    html.reveal-ready .service-card.is-visible:hover,
+    html.reveal-ready .why-card.is-visible:hover,
+    html.reveal-ready .sustainability-card.is-visible:hover,
+    html.reveal-ready .cert-card.is-visible:hover {
+      transform: translateY(-6px);
+      transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    /* Progressive Stagger Delays (80ms - 100ms intervals) */
+    html.reveal-ready .reveal-delay-1 { transition-delay: 0.09s; }
+    html.reveal-ready .reveal-delay-2 { transition-delay: 0.18s; }
+    html.reveal-ready .reveal-delay-3 { transition-delay: 0.27s; }
+    html.reveal-ready .reveal-delay-4 { transition-delay: 0.36s; }
+    html.reveal-ready .reveal-delay-5 { transition-delay: 0.45s; }
+    html.reveal-ready .reveal-delay-6 { transition-delay: 0.54s; }
 
     /* Accessibility: Respect Reduced Motion Preferences */
     @media (prefers-reduced-motion: reduce) {
+      html.reveal-ready .reveal,
+      html.reveal-ready .reveal-up,
+      html.reveal-ready .reveal-left,
+      html.reveal-ready .reveal-right,
+      html.reveal-ready .reveal-pop,
+      html.reveal-ready .reveal-scale,
       html.reveal-ready .reveal:not(.is-visible),
+      html.reveal-ready .reveal-up:not(.is-visible),
+      html.reveal-ready .reveal-left:not(.is-visible),
+      html.reveal-ready .reveal-right:not(.is-visible),
+      html.reveal-ready .reveal-pop:not(.is-visible),
       html.reveal-ready .reveal-scale:not(.is-visible) {
         opacity: 1 !important;
         transform: none !important;
@@ -3225,20 +3289,20 @@
     <div class="hero-glow"></div>
     <div class="container hero-container">
       <div class="hero-content">
-        <div class="hero-badge reveal">
+        <div class="hero-badge reveal-up">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="20 6 9 17 4 12"></polyline>
           </svg>
           <span>Industrial Label Solutions · Karur, Tamil Nadu</span>
         </div>
         
-        <h1 class="reveal reveal-delay-1">Precision Labels.<br><span class="highlight-blue">Engineered to Represent Your Brand.</span></h1>
+        <h1 class="reveal-up reveal-delay-1">Precision Labels.<br><span class="highlight-blue">Engineered to Represent Your Brand.</span></h1>
         
-        <p class="hero-desc reveal reveal-delay-2">
+        <p class="hero-desc reveal-up reveal-delay-2">
           Shree Labels delivers high-quality offset-printed labels, cotton tape, taffeta, satin, and custom label solutions. Based in Karur, Tamil Nadu, we combine precision printing, clean finishing, and reliable delivery for garment and textile manufacturers.
         </p>
 
-        <div class="hero-actions reveal reveal-delay-3">
+        <div class="hero-actions reveal-pop reveal-delay-3">
           <a href="#products" class="btn btn-primary">
             <span>Explore Label Range</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
@@ -3248,7 +3312,7 @@
           </a>
         </div>
 
-        <div class="hero-specs-strip reveal reveal-delay-4">
+        <div class="hero-specs-strip reveal-up reveal-delay-4">
           <div class="hero-spec-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
             <span>High Quality</span>
@@ -3276,7 +3340,7 @@
   <section class="capabilities-bar">
     <div class="container">
       <div class="capabilities-grid">
-        <div class="capability-item reveal reveal-delay-1">
+        <div class="capability-item reveal-pop reveal-delay-1">
           <div class="capability-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
@@ -3288,7 +3352,7 @@
           </div>
         </div>
 
-        <div class="capability-item reveal reveal-delay-2">
+        <div class="capability-item reveal-pop reveal-delay-2">
           <div class="capability-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
@@ -3301,7 +3365,7 @@
           </div>
         </div>
 
-        <div class="capability-item reveal reveal-delay-3">
+        <div class="capability-item reveal-pop reveal-delay-3">
           <div class="capability-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
@@ -3313,7 +3377,7 @@
           </div>
         </div>
 
-        <div class="capability-item reveal reveal-delay-4">
+        <div class="capability-item reveal-pop reveal-delay-4">
           <div class="capability-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"></circle>
@@ -3335,7 +3399,7 @@
   <section id="about" class="about">
     <div class="container">
       <div class="about-grid">
-        <div class="about-visual reveal-scale">
+        <div class="about-visual reveal-left">
           <div class="about-image-frame">
             <img src="gallery/press.webp" alt="Printing Press at Shree Labels facility">
           </div>
@@ -3345,7 +3409,7 @@
           </div>
         </div>
 
-        <div class="about-content reveal reveal-delay-1">
+        <div class="about-content reveal-right reveal-delay-1">
           <div class="badge-tag">About Shree Labels</div>
           <h2>Where Precision Meets Sustainability</h2>
           
@@ -3408,7 +3472,7 @@
        ========================================================================== -->
   <section id="products" class="products-section">
     <div class="container">
-      <div class="section-header reveal">
+      <div class="section-header reveal-up">
         <div class="badge-tag">Product Range</div>
         <h2 class="section-title">Comprehensive Label Solutions</h2>
         <p class="section-subtitle">Manufactured to exact brand specifications across diverse apparel substrates and finishes.</p>
@@ -3416,7 +3480,7 @@
 
       <div class="products-grid">
         <!-- Product 1: Cotton Tape Labels -->
-        <div class="product-card reveal reveal-delay-1">
+        <div class="product-card reveal-pop reveal-delay-1">
           <span class="product-card-badge">Eco-Friendly & Natural</span>
           <h3>Cotton Tape Labels</h3>
           <p>Made from soft, natural cotton tape with high-precision printing. Ideal for sustainable fashion brands seeking a soft, skin-friendly texture and authentic aesthetic.</p>
@@ -3441,7 +3505,7 @@
         </div>
 
         <!-- Product 2: Taffeta Labels -->
-        <div class="product-card reveal reveal-delay-2">
+        <div class="product-card reveal-pop reveal-delay-2">
           <span class="product-card-badge">Durable & Crisp</span>
           <h3>Taffeta Labels</h3>
           <p>Tightly woven taffeta labels engineered for exceptional crispness and durability. The industry standard for high-detail care instructions, barcode symbols, and sizing tags.</p>
@@ -3466,7 +3530,7 @@
         </div>
 
         <!-- Product 3: Satin Labels -->
-        <div class="product-card reveal reveal-delay-3">
+        <div class="product-card reveal-pop reveal-delay-3">
           <span class="product-card-badge">Silky Sheen & Comfort</span>
           <h3>Satin Labels</h3>
           <p>Silky-smooth satin with a lustrous sheen finish that provides luxurious comfort. Ideal for premium garments, intimate wear, nightwear, and designer collections.</p>
@@ -3491,7 +3555,7 @@
         </div>
 
         <!-- Product 4: Custom Labels -->
-        <div class="product-card reveal reveal-delay-4">
+        <div class="product-card reveal-pop reveal-delay-4">
           <span class="product-card-badge">Tailored Manufacturing</span>
           <h3>Custom Labels</h3>
           <p>Custom-built label solutions tailored to exact client dimensions, artwork, folding techniques, and substrates. Engineered to fit specialized apparel and textile requirements.</p>
@@ -3516,7 +3580,7 @@
         </div>
 
         <!-- Product 5: Offset Printed Labels -->
-        <div class="product-card reveal reveal-delay-5">
+        <div class="product-card reveal-pop reveal-delay-5">
           <span class="product-card-badge">High Volume & Sharp Definition</span>
           <h3>Offset Printed Labels</h3>
           <p>High-precision offset printed labels delivering superior color fidelity, smooth gradients, and microscopic typography. Perfect for bulk production orders requiring exact brand replication.</p>
@@ -3548,7 +3612,7 @@
        ========================================================================== -->
   <section id="services" class="services">
     <div class="container">
-      <div class="section-header reveal">
+      <div class="section-header reveal-up">
         <div class="badge-tag">Services</div>
         <h2 class="section-title">Core Printing & Finishing</h2>
         <p class="section-subtitle">Dedicated printing and custom finishing services for the apparel and packaging industry.</p>
@@ -3556,7 +3620,7 @@
 
       <div class="services-grid">
         <!-- Service 1: Label Printing -->
-        <div class="service-card reveal reveal-delay-1">
+        <div class="service-card reveal-pop reveal-delay-1">
           <div class="service-icon-container">
             <svg class="service-icon-svg" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M7 4h18a2 2 0 0 1 2 2v20a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path>
@@ -3570,7 +3634,7 @@
         </div>
 
         <!-- Service 2: Sticker Printing -->
-        <div class="service-card reveal reveal-delay-2">
+        <div class="service-card reveal-pop reveal-delay-2">
           <div class="service-icon-container">
             <svg class="service-icon-svg" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M28 16c0 6.627-5.373 12-12 12S4 22.627 4 16 9.373 4 16 4c2.5 0 4.8 0.77 6.7 2.1L28 16z"></path>
@@ -3582,7 +3646,7 @@
         </div>
 
         <!-- Service 3: Offset Printing -->
-        <div class="service-card reveal reveal-delay-3">
+        <div class="service-card reveal-pop reveal-delay-3">
           <div class="service-icon-container">
             <svg class="service-icon-svg" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="5" y="11" width="22" height="15" rx="2"></rect>
@@ -3595,7 +3659,7 @@
         </div>
 
         <!-- Service 4: Custom Finishing -->
-        <div class="service-card reveal reveal-delay-4">
+        <div class="service-card reveal-pop reveal-delay-4">
           <div class="service-icon-container">
             <svg class="service-icon-svg" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <polygon points="16 3 21 12 30 13 23 20 25 29 16 24 7 29 9 20 2 13 11 12 16 3"></polygon>
@@ -3613,14 +3677,14 @@
        ========================================================================== -->
   <section id="why-us" class="why-us">
     <div class="container">
-      <div class="section-header reveal">
+      <div class="section-header reveal-up">
         <div class="badge-tag">Why Choose Shree Labels</div>
         <h2 class="section-title">Built on Quality, Speed & Reliability</h2>
         <p class="section-subtitle">Our commitment to precision manufacturing makes us a dependable partner for textile and garment brands.</p>
       </div>
 
       <div class="why-grid">
-        <div class="why-card reveal reveal-delay-1">
+        <div class="why-card reveal-pop reveal-delay-1">
           <div class="why-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
@@ -3630,7 +3694,7 @@
           <p>Durable materials, sharp micro-detailing, and consistent weave & print quality across every production run.</p>
         </div>
 
-        <div class="why-card reveal reveal-delay-2">
+        <div class="why-card reveal-pop reveal-delay-2">
           <div class="why-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"></circle>
@@ -3641,7 +3705,7 @@
           <p>Dependable production scheduling and prompt dispatch so your garment supply lines remain on track.</p>
         </div>
 
-        <div class="why-card reveal reveal-delay-3">
+        <div class="why-card reveal-pop reveal-delay-3">
           <div class="why-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
@@ -3652,7 +3716,7 @@
           <p>Comprehensive options across cotton tape, taffeta, satin, and custom dimensions matching your design specifications.</p>
         </div>
 
-        <div class="why-card reveal reveal-delay-4">
+        <div class="why-card reveal-pop reveal-delay-4">
           <div class="why-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
@@ -3670,7 +3734,7 @@
        ========================================================================== -->
   <section id="sustainability" class="sustainability">
     <div class="container">
-      <div class="section-header reveal">
+      <div class="section-header reveal-up">
         <div class="badge-tag">Responsible Production</div>
         <h2 class="section-title">Sustainability & Conscious Manufacturing</h2>
         <p class="section-subtitle">Delivering high-performance labeling solutions while prioritizing natural materials, efficient production, and enduring quality.</p>
@@ -3678,7 +3742,7 @@
 
       <div class="sustainability-grid">
         <!-- Pillar 1: Organic Cotton Options -->
-        <div class="sustainability-card reveal reveal-delay-1">
+        <div class="sustainability-card reveal-pop reveal-delay-1">
           <div class="sustainability-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 22v-9"></path>
@@ -3690,7 +3754,7 @@
         </div>
 
         <!-- Pillar 2: Natural Material Choices -->
-        <div class="sustainability-card reveal reveal-delay-2">
+        <div class="sustainability-card reveal-pop reveal-delay-2">
           <div class="sustainability-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="9"></circle>
@@ -3704,7 +3768,7 @@
         </div>
 
         <!-- Pillar 3: Responsible Manufacturing Approach -->
-        <div class="sustainability-card reveal reveal-delay-3">
+        <div class="sustainability-card reveal-pop reveal-delay-3">
           <div class="sustainability-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
@@ -3715,7 +3779,7 @@
         </div>
 
         <!-- Pillar 4: Built for Long-Term Use -->
-        <div class="sustainability-card reveal reveal-delay-4">
+        <div class="sustainability-card reveal-pop reveal-delay-4">
           <div class="sustainability-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
@@ -3728,7 +3792,7 @@
       </div>
 
       <!-- Concluding Statement Banner -->
-      <div class="sustainability-statement reveal reveal-delay-2">
+      <div class="sustainability-statement reveal-up reveal-delay-2">
         <div class="statement-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"></circle>
@@ -3748,7 +3812,7 @@
        ========================================================================== -->
   <section id="certifications" class="certifications">
     <div class="container">
-      <div class="section-header reveal">
+      <div class="section-header reveal-up">
         <div class="badge-tag">Verified Compliance & Quality</div>
         <h2 class="section-title">Certifications & Standards</h2>
         <p class="section-subtitle">Our commitment to verified product safety, material purity, and recognized textile manufacturing standards.</p>
@@ -3756,7 +3820,7 @@
 
       <div class="cert-grid">
         <!-- Certification Card 1: OEKO-TEX STANDARD 100 -->
-        <div class="cert-card reveal reveal-delay-1">
+        <div class="cert-card reveal-pop reveal-delay-1">
           <div class="cert-media-wrap">
             <img src="gallery/cert-oekotex.png" alt="OEKO-TEX STANDARD 100 Official Certification Mark" class="cert-logo-img">
           </div>
@@ -3781,7 +3845,7 @@
         </div>
 
         <!-- Certification Card 2: Sedex (Supplier Ethical Data Exchange) -->
-        <div class="cert-card reveal reveal-delay-2">
+        <div class="cert-card reveal-pop reveal-delay-2">
           <div class="cert-media-wrap">
             <img src="gallery/cert-sedex.png" alt="Sedex Official Certification Mark" class="cert-logo-img">
           </div>
@@ -3813,7 +3877,7 @@
        ========================================================================== -->
   <section id="gallery" class="gallery">
     <div class="container">
-      <div class="gallery-controls-bar reveal">
+      <div class="gallery-controls-bar reveal-up">
         <div>
           <div class="badge-tag">Gallery</div>
           <h2 class="section-title" style="text-align: left; margin-bottom: 0.4rem;">Our Label Work</h2>
@@ -3831,7 +3895,7 @@
       </div>
 
       <!-- Preserved Gallery Images in Modern Carousel Cards (Natural Photo Colors) -->
-      <div class="gallery-slider reveal reveal-delay-1" id="gallery-slider">
+      <div class="gallery-slider reveal-up reveal-delay-1" id="gallery-slider">
         
         <div class="gallery-card" data-full="gallery/label1.jpeg" data-title="Clothing Label Sample 1">
           <div class="gallery-card-thumb">
@@ -3923,7 +3987,7 @@
        ========================================================================== -->
   <section id="feedback" class="feedback">
     <div class="container">
-      <div class="section-header reveal">
+      <div class="section-header reveal-up">
         <div class="badge-tag">Feedback</div>
         <h2 class="section-title">Client Feedback</h2>
         <p class="section-subtitle">Real experiences and feedback from our valued clients.</p>
@@ -3931,8 +3995,8 @@
 
       <div class="feedback-layout">
         
-        <!-- Column 1: Live Real-Time Reviews List -->
-        <div class="reviews-display-col reveal reveal-delay-1">
+        <!-- Column 1: Live Real-Time Reviews List (Slides from Left) -->
+        <div class="reviews-display-col reveal-left reveal-delay-1">
           <div class="reviews-column-header">
             <h3>Recent Reviews</h3>
             <p>Loaded in real time from our feedback records.</p>
@@ -3946,8 +4010,8 @@
           </ul>
         </div>
 
-        <!-- Column 2: Review Submission Form Card -->
-        <div class="review-form-card reveal reveal-delay-2">
+        <!-- Column 2: Review Submission Form Card (Slides from Right) -->
+        <div class="review-form-card reveal-right reveal-delay-2">
           <div class="review-form-card-header">
             <h3>Leave a Review</h3>
             <p>Share your experience with Shree Labels.</p>
@@ -4004,15 +4068,15 @@
        ========================================================================== -->
   <section id="location" class="location-section">
     <div class="container">
-      <div class="section-header reveal">
+      <div class="section-header reveal-up">
         <div class="badge-tag">Location</div>
         <h2 class="section-title">Visit Shree Labels</h2>
         <p class="section-subtitle">Located in Karur, Tamil Nadu</p>
       </div>
 
-      <div class="location-card-container reveal reveal-delay-1">
-        <!-- PRESERVED GOOGLE MAPS IFRAME (Natural Colors - No Filters) -->
-        <div class="map-container">
+      <div class="location-card-container">
+        <!-- PRESERVED GOOGLE MAPS IFRAME (Slides from Left - Fully Interactive) -->
+        <div class="map-container reveal-left">
           <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1337.9796498319527!2d78.06319673050042!3d10.96456725315808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baa2f4562bf8255%3A0x81dab99d13c9ba73!2sShree%20Labels!5e1!3m2!1sen!2sin!4v1757053264006!5m2!1sen!2sin" 
             title="Google Maps Location of Shree Labels in Karur"
@@ -4022,7 +4086,8 @@
           </iframe>
         </div>
 
-        <div class="location-info-panel">
+        <!-- Location Information Panel (Slides from Right) -->
+        <div class="location-info-panel reveal-right reveal-delay-1">
           <div>
             <h4>Shree Labels</h4>
             <p>Visit our facility in Karur for printing inquiries and label consultations.</p>
@@ -4060,8 +4125,8 @@
     <div class="contact-grid-bg"></div>
     <div class="container contact-container">
       
-      <!-- Contact Info Left Column -->
-      <div class="contact-info-col reveal">
+      <!-- Contact Info Left Column (Slides from Left) -->
+      <div class="contact-info-col reveal-left">
         <div class="badge-tag" style="background: rgba(47, 128, 237, 0.15); border-color: rgba(47, 128, 237, 0.35); color: var(--c-blue-bright);">Contact</div>
         <h2>Request a Quote & Contact</h2>
         <p class="lead-text">
@@ -4101,8 +4166,8 @@
         </div>
       </div>
 
-      <!-- Contact Form Right Column (Card) -->
-      <div class="contact-card-wrapper reveal reveal-delay-1">
+      <!-- Contact Form Right Column Card (Slides from Right) -->
+      <div class="contact-card-wrapper reveal-right reveal-delay-1">
         <div class="contact-card-header">
           <h3>Request a Quote / Send an Inquiry</h3>
           <p>Submit your label requirements and our team will respond promptly with pricing and lead times.</p>
@@ -4146,7 +4211,7 @@
        ========================================================================== -->
   <footer>
     <div class="container">
-      <div class="footer-top reveal">
+      <div class="footer-top reveal-up">
         <div class="footer-brand">
           <h4>SHREE LABELS</h4>
           <p>
@@ -4200,7 +4265,7 @@
         </div>
       </div>
 
-      <div class="footer-bottom reveal reveal-delay-1">
+      <div class="footer-bottom reveal-up reveal-delay-1">
         <p>© 2025 Shree Labels. All rights reserved.</p>
         <p style="color: var(--text-muted);">Karur, Tamil Nadu</p>
       </div>
@@ -4596,38 +4661,6 @@
           closeMenu();
         }
       });
-
-      // ==========================================
-      // UI: SCROLL REVEAL ANIMATIONS (INTERSECTION OBSERVER)
-      // ==========================================
-      if ('IntersectionObserver' in window) {
-        document.documentElement.classList.add('reveal-ready');
-        const revealElements = document.querySelectorAll('.reveal, .reveal-scale');
-        
-        const revealObserver = new IntersectionObserver((entries, observer) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, {
-          root: null,
-          rootMargin: '0px 0px -40px 0px',
-          threshold: 0.08
-        });
-
-        revealElements.forEach(el => revealObserver.observe(el));
-
-        // Fail-safe: ensure all elements become visible even if scrolling or observer stalls
-        setTimeout(() => {
-          revealElements.forEach(el => {
-            if (!el.classList.contains('is-visible')) {
-              el.classList.add('is-visible');
-            }
-          });
-        }, 3500);
-      }
     };
 
     if (document.readyState === 'loading') {
@@ -4635,6 +4668,51 @@
     } else {
       initUI();
     }
+  </script>
+
+  <!-- ==========================================================================
+       SCROLL REVEAL ANIMATION ENGINE (ZERO-DEPENDENCY, IMMEDIATE EXECUTION)
+       ========================================================================== -->
+  <script>
+    (function() {
+      if ('IntersectionObserver' in window) {
+        document.documentElement.classList.add('reveal-ready');
+        function initReveal() {
+          const revealElements = document.querySelectorAll(
+            '.reveal, .reveal-up, .reveal-left, .reveal-right, .reveal-pop, .reveal-scale'
+          );
+          const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          }, {
+            root: null,
+            rootMargin: '0px 0px -40px 0px',
+            threshold: 0.08
+          });
+
+          revealElements.forEach(el => revealObserver.observe(el));
+
+          // Fail-safe: ensure all elements become visible even if scrolling or observer stalls
+          setTimeout(() => {
+            revealElements.forEach(el => {
+              if (!el.classList.contains('is-visible')) {
+                el.classList.add('is-visible');
+              }
+            });
+          }, 3500);
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initReveal);
+        } else {
+          initReveal();
+        }
+      }
+    })();
   </script>
 </body>
 </html>
